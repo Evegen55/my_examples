@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package other_examples;
+package Java8.StreamAPI;
 
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +11,6 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.function.Consumer;
-import static java.util.stream.Collectors.toList;
 
 /**
  *
