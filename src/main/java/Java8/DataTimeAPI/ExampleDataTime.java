@@ -41,6 +41,9 @@ public class ExampleDataTime {
         final LocalDateTime to = LocalDateTime.of( 2015, Month.APRIL, 16, 23, 59, 59 );
         final Duration duration = Duration.between( from, to );
 
+        ZoneOffset newYorkOffset = ZoneOffset.of("-05:00");
+        final ZonedDateTime zonedDatetime1 = ZonedDateTime.now();
+        zonedDatetime1.withZoneSameInstant(newYorkOffset);
 
         //int day1 = instant.get(ChronoField.DAY_OF_WEEK);//Exception in thread "main" java.time.temporal.UnsupportedTemporalTypeException: Unsupported field: DayOfWeek
         //DayOfWeek dayString1 = DayOfWeek.of(day1);
@@ -62,5 +65,8 @@ public class ExampleDataTime {
 
         System.out.println( "Duration in days: " + duration.toDays() );
         System.out.println( "Duration in hours: " + duration.toHours() );
+
+        System.out.println( zonedDatetime1 );
+        System.out.println( newYorkOffset );
     }
 }
