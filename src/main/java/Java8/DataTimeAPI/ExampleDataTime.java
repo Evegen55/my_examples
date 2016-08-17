@@ -2,6 +2,8 @@ package Java8.DataTimeAPI;
 
 import java.time.*;
 import java.time.temporal.ChronoField;
+import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by Evgenii_Lartcev on 8/10/2016.
@@ -28,6 +30,9 @@ public class ExampleDataTime {
         Duration d2 = Duration.between(instant, instant1);
 
         final Clock clock = Clock.systemUTC();
+        Date date111 = new Date(clock.millis());
+
+
         final LocalDate dateFromClock = LocalDate.now( clock );
         final LocalDateTime datetimeFromClock = LocalDateTime.now( clock );
 
@@ -40,6 +45,7 @@ public class ExampleDataTime {
         final LocalDateTime from = LocalDateTime.of( 2014, Month.APRIL, 16, 0, 0, 0 );
         final LocalDateTime to = LocalDateTime.of( 2015, Month.APRIL, 16, 23, 59, 59 );
         final Duration duration = Duration.between( from, to );
+
 
         ZoneOffset newYorkOffset = ZoneOffset.of("-05:00");
         LocalDateTime dateTime = LocalDateTime.of(2014, Month.MARCH, 18, 13, 45);
