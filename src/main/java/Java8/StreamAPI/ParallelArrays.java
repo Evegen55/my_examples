@@ -6,26 +6,39 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Created by Evgenii_Lartcev on 8/17/2016.
  * This small code snippet uses method parallelSetAll() to fill up arrays with 20000 random values.
- * After that, the parallelSort() is being applied. The program outputs first 10 elements before and after sorting
+ * After that, the parallelSort() and sort() is being applied.
+ * The program outputs first 10 elements before and after sorting
  * so to ensure the array is really ordered.
  */
 public class ParallelArrays {
     public static void main( String[] args ) {
         long[] arrayOfLong = new long [ 20000000 ];
+        long[] arrayOfLong1 = new long [ 20000000 ];
+        //fill array 1 and print
         Arrays.parallelSetAll( arrayOfLong,
                 index -> ThreadLocalRandom.current().nextInt( 1000000 ) );
         Arrays.stream( arrayOfLong ).limit( 10 ).forEach(
                 i -> System.out.print( i + " " ) );
         System.out.println();
+        //fill array 1 and print
+        Arrays.parallelSetAll( arrayOfLong1,
+                index -> ThreadLocalRandom.current().nextInt( 1000000 ) );
+        Arrays.stream( arrayOfLong1 ).limit( 10 ).forEach(
+                i -> System.out.print( i + " " ) );
+        System.out.println();
+
         final long startTime1 = System.nanoTime();
         Arrays.parallelSort( arrayOfLong );
         final long endTime1= System.nanoTime();
 
         final long startTime2 = System.nanoTime();
-        Arrays.sort(arrayOfLong);
+        Arrays.sort(arrayOfLong1);
         final long endTime2= System.nanoTime();
 
-        Arrays.stream( arrayOfLong ).limit( 10 ).forEach(
+        Arrays.stream( arrayOfLong ).limit( 30 ).forEach(
+                i -> System.out.print( i + " " ) );
+        System.out.println();
+        Arrays.stream( arrayOfLong1 ).limit( 30 ).forEach(
                 i -> System.out.print( i + " " ) );
         System.out.println();
         System.out.println();
