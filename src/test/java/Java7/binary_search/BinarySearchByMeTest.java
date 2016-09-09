@@ -9,14 +9,12 @@ import static org.junit.Assert.*;
  * Created by Evgenii_Lartcev on 8/10/2016.
  */
 public class BinarySearchByMeTest {
-    @Test
-    public void find() throws Exception {
+    private BinarySearchByMe bs;
+    private long f;
 
-    }
-
-    BinarySearchByMe bs;
-    long f;
-
+    /**
+     *
+     */
     public BinarySearchByMeTest() {
     }
 
