@@ -10,6 +10,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.*;
 
@@ -30,6 +31,7 @@ public class MockitoHelloWorld {
         Comparable c = mock(Comparable.class);
         when(c.compareTo("Test")).thenReturn(1);
         assertEquals(1, c.compareTo("Test"));
+        assertNotSame(1, c.compareTo("NotTest"));
     }
 
     @Test
@@ -40,6 +42,8 @@ public class MockitoHelloWorld {
         assertEquals(-1, c.compareTo(10));
         assertEquals(-1, c.compareTo(13));
         assertEquals(-1, c.compareTo(27));
+
+        assertNotSame(-1, c.compareTo(27.0));
     }
 
     @Test(expected=IOException.class)
@@ -72,7 +76,7 @@ public class MockitoHelloWorld {
         //verify(mockedList).add("two");
     }
 
-    @Test
+    @Test(expected=RuntimeException.class)
     public void testBehaviuorStub() {
         LinkedList mockedList = mock(LinkedList.class);
         when(mockedList.get(0)).thenReturn("first");
