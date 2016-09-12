@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.anyInt;
@@ -54,6 +56,47 @@ public class MockitoHelloWorld {
         osw.close();
         verify(mock).close();
     }
+
+    @Test
+    public void testBehaviourMock() {
+        List mockedList = mock(List.class);
+        mockedList.add("one");
+        mockedList.clear();
+        //good
+        verify(mockedList).add("one");
+        verify(mockedList).clear();
+        //bad
+        //verify(mockedList).add("two");
+    }
+
+    @Test
+    public void testBehaviuorStub() {
+        LinkedList mockedList = mock(LinkedList.class);
+        when(mockedList.get(0)).thenReturn("first");
+        when(mockedList.get(1)).thenThrow(new RuntimeException());
+
+        System.out.println(mockedList.get(0));
+        System.out.println(mockedList.get(1));
+        System.out.println(mockedList.get(999));
+    }
+
+    @Test
+    public void testHalfMock() {
+        List list = new LinkedList();
+        List spy = spy(list);
+
+        when(spy.size()).thenReturn(100);
+
+        spy.add("one");
+        spy.add("two");
+
+        System.out.println(spy.get(0));
+        System.out.println(spy.size());
+
+        verify(spy).add("one");
+        verify(spy).add("two");
+    }
+
 
 
 }
