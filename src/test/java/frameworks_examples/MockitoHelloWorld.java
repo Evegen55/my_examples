@@ -37,6 +37,9 @@ public class MockitoHelloWorld {
         Comparable c = mock(Comparable.class);
         when(c.compareTo(anyInt())).thenReturn(-1);
         assertEquals(-1, c.compareTo(5));
+        assertEquals(-1, c.compareTo(10));
+        assertEquals(-1, c.compareTo(13));
+        assertEquals(-1, c.compareTo(27));
     }
 
     @Test(expected=IOException.class)
