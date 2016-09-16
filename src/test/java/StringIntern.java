@@ -24,5 +24,8 @@ public class StringIntern {
         assertNotSame(name2, is(name3));
         assertNotSame(name2, is(name4));
         assertNotSame(name3, is(name4));
+
+        String noneEmpty = "ABCD".intern();
+        System.out.println(noneEmpty);
     }
 }
