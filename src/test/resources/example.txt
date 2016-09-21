@@ -1,0 +1,2 @@
+Understanding issue description (comments and attached content review),
+reproducing an issue (fixing reproducing conditions), source code review (looking for origin cause, looking for code that needs  refactoring).
