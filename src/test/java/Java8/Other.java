@@ -36,6 +36,26 @@ public class Other {
     }
 
     @Test
+    public void filesStreamsCountWords() throws IOException {
+        String path = String.join("\\", ".", "src", "test", "resources", "example.txt");
+        File file = new File(path);
+        //if we want to find words per lines
+        Files.lines(file.toPath())
+                .map(line ->
+                        Stream.of(line.split("[\\P{L}]+")).filter(w -> w.length() > 5).count()
+                    )
+                .forEach(System.out::println);
+        //or if we want to find all words in all lines:
+        System.out.println("all words in file with length >5:");
+        final long count = Files.lines(file.toPath())
+                .flatMap(line ->
+                        Stream.of(line.split("[\\P{L}]+")).filter(w -> w.length() > 5)
+                        )
+                .count();
+        System.out.println("\t" + count);
+    }
+
+    @Test
     /**
      * print list files in a directory
      */
