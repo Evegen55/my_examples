@@ -26,7 +26,7 @@ public class Other {
 
     @Test
     public void filesStreams() throws IOException {
-        String path = String.join("\\", ".", "src", "test", "resources", "example.txt");
+        String path = String.join("/", ".", "src", "test", "resources", "example.txt");
         File file = new File(path);
         Stream<String> lines = Files.lines(file.toPath());
         Optional<String> sourceEntry = lines
@@ -37,7 +37,7 @@ public class Other {
 
     @Test
     public void filesStreamsCountWords() throws IOException {
-        String path = String.join("\\", ".", "src", "test", "resources", "example.txt");
+        String path = String.join("/", ".", "src", "test", "resources", "example.txt");
         File file = new File(path);
         //if we want to find words per lines
         Files.lines(file.toPath())
@@ -60,7 +60,7 @@ public class Other {
      * print list files in a directory
      */
     public void testListFilesInDirectory() {
-        String path = String.join("\\", ".", "src", "main", "java", "Java7", "earthquakes");
+        String path = String.join("/", ".", "src", "main", "java", "Java7", "earthquakes");
         File file = new File(path);
         try (Stream<Path> entries = Files.list(file.toPath())) {
             entries.forEach(System.out::println);
@@ -74,7 +74,7 @@ public class Other {
      * print list files in a directory and in all subdirectories
      */
     public void testListFilesInDirectoryAndSub() {
-        String path = String.join("\\", ".", "src", "main");
+        String path = String.join("/", ".", "src", "main");
         File file = new File(path);
         try (Stream<Path> entries = Files.walk(file.toPath())) {
             entries.forEach(System.out::println);
