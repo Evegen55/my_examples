@@ -8,8 +8,8 @@ import java.net.URI;
  */
 public class OpenVLCPlayer {
     /**
-     * @website: www.instanceofjava.com
-     * @category: how to open a webpage in browser using java code
+     * @link: http://www.instanceofjava.com
+     * how to open a webpage in browser using java code
      */
 
     public static void main(String[] args)  {
