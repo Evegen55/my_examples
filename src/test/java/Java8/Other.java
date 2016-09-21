@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.ZoneId;
 import java.util.Optional;
 import java.util.stream.Stream;
@@ -33,6 +34,14 @@ public class Other {
                 .filter(s -> s.contains("comments"))
                 .findFirst();
         System.out.println(sourceEntry.get());
+    }
+
+    @Test
+    public void filesStreamsImproved() throws IOException {
+        Files.lines(Paths.get("src", "test", "resources", "example.txt")) //this is a stream
+                .filter(s -> s.contains("comments"))
+                .findFirst() //this is an Optional<String>
+                .ifPresent(System.out::println);
     }
 
     @Test
