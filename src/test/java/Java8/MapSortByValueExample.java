@@ -35,11 +35,16 @@ public class MapSortByValueExample {
         System.out.println("\n Original Map after sorting stream : \n" + countryCapitalMap);
 
         //this is from http://www.topjavatutorial.com/java/java-programs/sort-map-java-8/
-        Map<String, String> sortedMap = new LinkedHashMap<>();
+        Map<String, String> sortedMapByValue = new LinkedHashMap<>();
         countryCapitalMap.entrySet().stream()
                .sorted(Map.Entry.comparingByValue())
-               .forEachOrdered(c -> sortedMap.put(c.getKey(), c.getValue()));
+               .forEachOrdered(c -> sortedMapByValue.put(c.getKey(), c.getValue()));
+        System.out.println("\n new map sorted by value : \n" + sortedMapByValue);
 
-        System.out.println("\n new map sorted by value : \n" + sortedMap);
+        Map<String, String> sortedMapByKey = new LinkedHashMap<>();
+        countryCapitalMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .forEachOrdered(c -> sortedMapByKey.put(c.getKey(), c.getValue()));
+        System.out.println("\n new map sorted by key : \n" + sortedMapByKey);
     }
 }
