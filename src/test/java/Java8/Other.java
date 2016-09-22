@@ -69,9 +69,10 @@ public class Other {
      * print list files in a directory
      */
     public void testListFilesInDirectory() {
-        String path = String.join("/", ".", "src", "main", "java", "Java7", "earthquakes");
-        File file = new File(path);
-        try (Stream<Path> entries = Files.list(file.toPath())) {
+        //String path = String.join("/", ".", "src", "main", "java", "Java7", "earthquakes");
+        //File file = new File(path);
+        //try (Stream<Path> entries = Files.list(file.toPath())) {
+        try (Stream<Path> entries = Files.list(Paths.get("src", "main", "java", "Java7", "earthquakes"))) {
             entries.forEach(System.out::println);
         } catch (IOException e) {
             e.printStackTrace();
