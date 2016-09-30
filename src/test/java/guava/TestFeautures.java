@@ -4,6 +4,7 @@ import com.google.common.math.BigIntegerMath;
 import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
 import com.google.common.math.LongMath;
+import com.google.common.net.InternetDomainName;
 import com.google.common.primitives.UnsignedInteger;
 import com.google.common.primitives.UnsignedLong;
 import org.junit.Test;
@@ -89,6 +90,17 @@ public class TestFeautures {
     public void testMath() {
         IntMath.checkedAdd(Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
+
+    /**
+     * @see <a href="https://github.com/google/guava/wiki/InternetDomainNameExplained">InternetDomainNameExplained</a>
+     */
+    @Test
+    public void testInternetDomainNameExplained() {
+        InternetDomainName owner = InternetDomainName.from("mail.google.com").topPrivateDomain();
+        System.out.println(owner);
+    }
+
+
 
 
 }
