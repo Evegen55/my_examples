@@ -4,6 +4,7 @@ import com.google.common.math.BigIntegerMath;
 import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
 import com.google.common.math.LongMath;
+import com.google.common.primitives.UnsignedInteger;
 import org.junit.Test;
 
 import java.io.File;
@@ -49,5 +50,20 @@ public class TestFeautures {
         BigInteger sideLength = BigIntegerMath.sqrt(nearestInteger, CEILING);
 
         System.out.println(logFloor + "\n" + mustNotOverflow + "\n" + quotient + "\n" + nearestInteger + "\n" + sideLength);
+    }
+
+    @Test
+    //http://google.github.io/guava/releases/snapshot/api/docs/com/google/common/primitives/UnsignedInteger.html
+    public void testPrimitivesExplained() {
+        int maxSigned = Integer.MAX_VALUE;
+        System.out.println(maxSigned);
+        //by google
+        int maxUnigned = UnsignedInteger.MAX_VALUE.intValue();
+        System.out.println(maxUnigned);
+        System.out.println(UnsignedInteger.MAX_VALUE.longValue());
+        System.out.println(UnsignedInteger.MAX_VALUE);
+        System.out.println(UnsignedInteger.ONE);
+        System.out.println(UnsignedInteger.ZERO);
+        System.out.println(UnsignedInteger.fromIntBits(0101010101)); //good job! (Returns an UnsignedInteger corresponding to a given bit representation.)
     }
 }
