@@ -24,16 +24,20 @@ import static java.math.RoundingMode.FLOOR;
  */
 public class TestFeautures {
 
+    /**
+     * @see <a href="https://github.com/google/guava/wiki/IOExplained">IOExplained</a>
+     */
     @Test
-    //https://github.com/google/guava/wiki/IOExplained
     public void test() throws IOException {
         List<String> list = readLines(new FileReader(new File("src/test/resources/warAndPeace.txt")));
         list.forEach(System.out::println);
         System.out.println("nums of lines in the file" + "\t" + list.size());
     }
 
+    /**
+     * @see <a href="https://github.com/google/guava/wiki/MathExplained">MathExplained</a>
+     */
     @Test
-    //https://github.com/google/guava/wiki/MathExplained
     public void testMathExplained() {
         long n = 100;
         int logFloor = LongMath.log2(n, FLOOR);
@@ -53,8 +57,11 @@ public class TestFeautures {
         System.out.println(logFloor + "\n" + mustNotOverflow + "\n" + quotient + "\n" + nearestInteger + "\n" + sideLength);
     }
 
+    /**
+     * @see <a href="http://google.github.io/guava/releases/snapshot/api/docs/com/google/common/primitives/UnsignedInteger.html">
+     *     UnsignedInteger</a>
+     */
     @Test
-    //http://google.github.io/guava/releases/snapshot/api/docs/com/google/common/primitives/UnsignedInteger.html
     public void testPrimitivesExplained() {
         int maxSigned = Integer.MAX_VALUE;
         System.out.println(maxSigned);
@@ -72,7 +79,14 @@ public class TestFeautures {
         //by google
         System.out.println("long max value" + "\t" + UnsignedLong.MAX_VALUE);
         System.out.println(UnsignedLong.fromLongBits(0101010101));
+    }
 
+    /**
+     * @see <a href="https://github.com/google/guava/wiki/MathExplained">MathExplained</a>
+     */
+    @Test(expected = ArithmeticException.class)
+    public void testMath() {
+        IntMath.checkedAdd(Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
 
 
