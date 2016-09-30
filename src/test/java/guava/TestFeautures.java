@@ -106,6 +106,9 @@ public class TestFeautures {
         System.out.println(owner);
     }
 
+    /**
+     * @see <a href="https://github.com/google/guava/wiki/IOExplained">IOExplained</a>
+     */
     @Test
     public void testIOExplained() throws IOException {
         // SHA-1 a file
@@ -117,10 +120,10 @@ public class TestFeautures {
 
         // Copy the data from a URL to a file
         URL url = new URL("ftp://ftp-trace.ncbi.nih.gov/1000genomes/ftp/phase3/data/HG00105/alignment/HG00105.unmapped.ILLUMINA.bwa.GBR.low_coverage.20130415.bam.bai");
-        File fileJava = new File("src/test/resources/20130415.bam.bai");
-        fileJava.deleteOnExit();
-        Resources.asByteSource(url).copyTo(Files.asByteSink(fileJava));
-        assertTrue(fileJava.exists());
+        File fileBamIndex = new File("src/test/resources/20130415.bam.bai");
+        fileBamIndex.deleteOnExit();
+        Resources.asByteSource(url).copyTo(Files.asByteSink(fileBamIndex));
+        assertTrue(fileBamIndex.exists());
 
     }
 
