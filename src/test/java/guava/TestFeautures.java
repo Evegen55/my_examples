@@ -5,6 +5,7 @@ import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
 import com.google.common.math.LongMath;
 import com.google.common.primitives.UnsignedInteger;
+import com.google.common.primitives.UnsignedLong;
 import org.junit.Test;
 
 import java.io.File;
@@ -65,5 +66,14 @@ public class TestFeautures {
         System.out.println(UnsignedInteger.ONE);
         System.out.println(UnsignedInteger.ZERO);
         System.out.println(UnsignedInteger.fromIntBits(0101010101)); //good job! (Returns an UnsignedInteger corresponding to a given bit representation.)
+
+        long maxSignedLong = Long.MAX_VALUE;
+        System.out.println("long max value" + "\t" + maxSignedLong);
+        //by google
+        System.out.println("long max value" + "\t" + UnsignedLong.MAX_VALUE);
+        System.out.println(UnsignedLong.fromLongBits(0101010101));
+
     }
+
+
 }
