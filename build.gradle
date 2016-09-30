@@ -50,6 +50,14 @@ dependencies {
 
 }
 
+// creating javadoc task for test code
+task testJavadoc(type: Javadoc) {
+    source = sourceSets.test.allJava
+    classpath = sourceSets.test.compileClasspath
+    // if not changed the destinationDir, the javadoc for production code is overridden.
+    destinationDir = file("${buildDir}/docs/testjavadoc")
+}
+
 //publish sources jar to a maven local
 task sourcesJar(type: Jar) {
     from sourceSets.main.allSource
