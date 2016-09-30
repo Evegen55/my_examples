@@ -26,6 +26,7 @@ public class TestFeautures {
 
     /**
      * @see <a href="https://github.com/google/guava/wiki/IOExplained">IOExplained</a>
+     * @throws IOException when try to read non-exist file
      */
     @Test
     public void test() throws IOException {

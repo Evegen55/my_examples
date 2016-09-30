@@ -5,8 +5,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotSame;
 
 /**
- * Created by Evgenii_Lartcev on 9/12/2016 under
- * https://cnapagoda.blogspot.ru/2016/09/java-string-intern-method.html
+ * @author  Evgenii_Lartcev on 9/12/2016 under
+ * @see <a href="https://cnapagoda.blogspot.ru/2016/09/java-string-intern-method.html">java-string-intern-method</a>
  *
  */
 public class StringIntern {
