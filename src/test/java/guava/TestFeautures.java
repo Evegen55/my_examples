@@ -1,5 +1,9 @@
 package guava;
 
+import com.google.common.hash.HashCode;
+import com.google.common.hash.Hashing;
+import com.google.common.io.Files;
+import com.google.common.io.Resources;
 import com.google.common.math.BigIntegerMath;
 import com.google.common.math.DoubleMath;
 import com.google.common.math.IntMath;
@@ -14,11 +18,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.math.RoundingMode;
+import java.net.URL;
 import java.util.List;
 
 import static com.google.common.io.CharStreams.readLines;
 import static java.math.RoundingMode.CEILING;
 import static java.math.RoundingMode.FLOOR;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author Evgenii_Lartcev on 9/29/2016.
@@ -98,6 +104,24 @@ public class TestFeautures {
     public void testInternetDomainNameExplained() {
         InternetDomainName owner = InternetDomainName.from("mail.google.com").topPrivateDomain();
         System.out.println(owner);
+    }
+
+    @Test
+    public void testIOExplained() throws IOException {
+        // SHA-1 a file
+        File file = new File("src/test/resources/warAndPeace.txt");
+        HashCode hashSHA1 = Files.asByteSource(file).hash(Hashing.sha1());
+        System.out.println(hashSHA1);
+        HashCode hashCRC32 = Files.asByteSource(file).hash(Hashing.crc32());
+        System.out.println(hashCRC32);
+
+        // Copy the data from a URL to a file
+        URL url = new URL("ftp://ftp-trace.ncbi.nih.gov/1000genomes/ftp/phase3/data/HG00105/alignment/HG00105.unmapped.ILLUMINA.bwa.GBR.low_coverage.20130415.bam.bai");
+        File fileJava = new File("src/test/resources/20130415.bam.bai");
+        fileJava.deleteOnExit();
+        Resources.asByteSource(url).copyTo(Files.asByteSink(fileJava));
+        assertTrue(fileJava.exists());
+
     }
 
 
