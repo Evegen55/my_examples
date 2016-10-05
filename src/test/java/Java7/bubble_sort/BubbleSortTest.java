@@ -13,9 +13,9 @@ import static org.junit.Assert.*;
 public class BubbleSortTest {
 
     private BubbleSort bubbleSort;
-    private static final int[] arrBeforeSort          = {77, 99, 44, 55, 22, 88, 11};
-    private static final int[] arrAfterFirstIteration = {77, 44, 55, 22, 88, 11, 99};
-    private static final int[] arrAfterFullSorting    = {11, 22, 44, 55, 77, 88, 99};
+    private final int[] arrBeforeSort          = {77, 99, 44, 55, 22, 88, 11};
+    private final int[] arrAfterFirstIteration = {77, 44, 55, 22, 88, 11, 99};
+    private final int[] arrAfterFullSorting    = {11, 22, 44, 55, 77, 88, 99};
 
     @Before
     public void setUp() throws Exception {
@@ -26,9 +26,9 @@ public class BubbleSortTest {
     public void tearDown() throws Exception {
         System.out.println("==============================");
         for (int i = 0; i < bubbleSort.getArr().length; i++) {
-            System.out.println(bubbleSort.getArr()[i]);
+            System.out.print(bubbleSort.getArr()[i] + "\t");
         }
-        bubbleSort = null;
+        System.out.println("\n");
     }
 
     @Test
