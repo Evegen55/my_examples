@@ -2,6 +2,7 @@ package Java7.bubble_sort;
 
 /**
  * @author Evgenii_Lartcev (created on 10/5/2016).
+ * O(N^2)
  */
 public class BubbleSort {
 
