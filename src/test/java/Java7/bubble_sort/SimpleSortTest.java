@@ -12,7 +12,6 @@ import static org.junit.Assert.*;
  */
 public class SimpleSortTest {
 
-
     private SimpleSort simpleSort;
     private final int[] arrBeforeSort = {77, 99, 44, 55, 22, 88, 11};
     private final int[] arrAfterFirstIteration = {77, 44, 55, 22, 88, 11, 99};
@@ -46,6 +45,12 @@ public class SimpleSortTest {
 
     @Test
     public void selectionSort() {
+        simpleSort.selectionSort();
+        assertThat(simpleSort.getArr(), is(arrAfterFullSorting));
+    }
+
+    @Test
+    public void selectSort() throws Exception {
         simpleSort.selectionSort();
         assertThat(simpleSort.getArr(), is(arrAfterFullSorting));
     }

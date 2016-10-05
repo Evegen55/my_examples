@@ -57,6 +57,24 @@ public class SimpleSort {
         }
     }
 
+    /**
+     * O(N^2) - compares
+     * O(N^2) - swap elements in the worst case
+     * O(N) - swap elements in the best case
+     */
+    public void selectSort() {
+        int inner;
+        for (int outer = 0; outer < arr.length; outer++) {
+            int temp = arr[outer];
+            inner = outer;
+            while (inner > 0 && arr[inner - 1] >= temp) {
+                arr[inner] = arr[inner - 1];
+                --inner;
+            }
+            arr[inner] = temp;
+        }
+    }
+
     private void swap(int i, int i1) {
         int temp = arr[i];
         arr[i] = arr[i1];
