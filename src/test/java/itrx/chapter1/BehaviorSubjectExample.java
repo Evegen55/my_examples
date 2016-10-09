@@ -31,6 +31,12 @@ import rx.subjects.BehaviorSubject;
 
 public class BehaviorSubjectExample {
 
+	@Test
+	/*
+	BehaviorSubject хранит только последнее значение. Это то же самое,
+	что и ReplaySubject, но с буфером размером 1.
+	Начальное значение предоставляется для того, чтобы быть доступным еще до поступления данных.
+	 */
 	public void exampleLate() {
 		BehaviorSubject<Integer> s = BehaviorSubject.create();
 		s.onNext(0);
@@ -42,13 +48,14 @@ public class BehaviorSubjectExample {
 		// Late: 2
 		// Late: 3
 	}
-	
+
+	@Test
 	public void exampleCompleted() {
 		BehaviorSubject<Integer> s = BehaviorSubject.create();
 		s.onNext(0);
 		s.onNext(1);
 		s.onNext(2);
-		s.onCompleted();
+		s.onCompleted(); //try to comment it
 		s.subscribe(
 		    v -> System.out.println("Late: " + v),
 		    e -> System.out.println("Error"),

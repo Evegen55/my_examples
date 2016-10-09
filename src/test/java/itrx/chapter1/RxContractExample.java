@@ -32,6 +32,7 @@ import rx.subjects.Subject;
 
 public class RxContractExample {
 
+	@Test
 	public void example() {
 		Subject<Integer, Integer> s = ReplaySubject.create();
 		s.subscribe(v -> System.out.println(v));
@@ -42,7 +43,7 @@ public class RxContractExample {
 
 		// 0
 	}
-	
+	@Test
 	public void examplePrintCompletion() {
 		Subject<Integer, Integer>  values = ReplaySubject.create();
 		values.subscribe(
@@ -57,6 +58,7 @@ public class RxContractExample {
 		
 		// 0
 		// 1
+        // Completed
 	}
 
 	

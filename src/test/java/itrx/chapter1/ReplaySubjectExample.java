@@ -48,8 +48,16 @@ public class ReplaySubjectExample {
 		// Late: 1
 		// Early:2
 		// Late: 2
+
+		/*
+		Все значения были получены, не смотря на то, что один из подписчиков подписался позже другого.
+		 */
 	}
-	
+	/*
+	Кэшировать всё подряд не всегда лучшая идея, так как последовательности могут быть длинными
+	или даже бесконечными. Фабричный метод ReplaySubject.createWithSize ограничивает размер буфера,
+	а ReplaySubject.createWithTime время, которое объекты будут оставаться в кеше.
+	 */
 	public void exampleWithSize() {
 		ReplaySubject<Integer> s = ReplaySubject.createWithSize(2); 
 		s.onNext(0);

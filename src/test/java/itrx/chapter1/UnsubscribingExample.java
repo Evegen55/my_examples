@@ -37,6 +37,7 @@ import rx.subscriptions.Subscriptions;
 
 public class UnsubscribingExample {
 
+	@Test
 	public void exampleUnsubscribe() {
 		Subject<Integer, Integer> values = ReplaySubject.create();
 		Subscription subscription = values.subscribe(
@@ -45,22 +46,23 @@ public class UnsubscribingExample {
 				() -> System.out.println("Done"));
 		values.onNext(0);
 		values.onNext(1);
-		subscription.unsubscribe();
+		subscription.unsubscribe(); //try to comment it
 		values.onNext(2);
 
 		// 0
 		// 1
 	}
 
+	@Test
 	public void exampleIndependentSubscriptions() {
 		Subject<Integer, Integer> values = ReplaySubject.create();
 		Subscription subscription1 = values.subscribe(v -> System.out
-				.println("First: " + v));
-		values.subscribe(v -> System.out.println("Second: " + v));
+				.println("First subscriber: " + v));
+		values.subscribe(v -> System.out.println("Second subscriber: " + v)); //
 		values.onNext(0);
 		values.onNext(1);
 		subscription1.unsubscribe();
-		System.out.println("Unsubscribed first");
+		System.out.println("Unsubscribed first subscriber");
 		values.onNext(2);
 
 		// First: 0
@@ -71,6 +73,7 @@ public class UnsubscribingExample {
 		// Second: 2
 	}
 
+	@Test
 	public void exampleUnsubscribeAction() {
 		Subscription s = Subscriptions
 				.create(() -> System.out.println("Clean"));

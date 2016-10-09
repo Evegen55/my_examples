@@ -31,6 +31,7 @@ import rx.subjects.PublishSubject;
 
 public class PublishSubjectExample {
 
+	@Test
 	public void example() {
 		PublishSubject<Integer> subject = PublishSubject.create();
 		subject.onNext(1);
@@ -42,6 +43,11 @@ public class PublishSubjectExample {
 		// 2
 		// 3
 		// 4
+
+        /*
+        1 не была напечатана из-за того, что мы не были подписаны в момент когда она была передана.
+        После того как мы подписались, мы начали получать все значения поступающие в subject.
+         */
 	}
 	
 	
@@ -51,6 +57,7 @@ public class PublishSubjectExample {
 	
 	@Test
 	public void test() {
+        //for testing purposes
 		TestSubscriber<Integer> tester = new TestSubscriber<>();
 		
 		PublishSubject<Integer> subject = PublishSubject.create();

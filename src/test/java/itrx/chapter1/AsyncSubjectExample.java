@@ -33,6 +33,7 @@ import rx.subjects.AsyncSubject;
 
 public class AsyncSubjectExample {
 
+    @Test
 	public void exampleLastValue() {
 		AsyncSubject<Integer> s = AsyncSubject.create();
 		s.subscribe(v -> System.out.println(v));
@@ -44,6 +45,7 @@ public class AsyncSubjectExample {
 		// 2
 	}
 
+	@Test
 	public void exampleNoCompletion() {
 		AsyncSubject<Integer> s = AsyncSubject.create();
 		s.subscribe(v -> System.out.println(v));
