@@ -3,21 +3,23 @@ package Java7.ADT;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-
 import java.util.LinkedList;
-import java.util.List;
 
 /**
  * @author Evgenii_Lartcev (created on 10/10/2016).
  */
 public class CheckParenthesis {
 
-    public static boolean check(String input) {
+    /**
+     * @param input - input string that has to be checked for pairing parenthesis
+     * @return true or false
+     */
+    public static boolean check(final String input) {
         final Logger logger = LogManager.getLogger(CheckParenthesis.class.getName());
 
         LinkedList<Character> list = new LinkedList<>(); //this stack may be with infinity size
         for (char c : input.toCharArray()) {
-            switch(c) {
+            switch (c) {
                 case '{':
                 case '[':
                 case '(':
@@ -38,8 +40,8 @@ public class CheckParenthesis {
                     } else {
                         break;
                     }
-                    default:
-                        break;
+                default:
+                    break;
 
             }
         }
