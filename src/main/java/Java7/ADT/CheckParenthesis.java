@@ -18,7 +18,7 @@ public class CheckParenthesis {
         final Logger logger = LogManager.getLogger(CheckParenthesis.class.getName());
 
         LinkedList<Character> list = new LinkedList<>(); //this stack may be with infinity size
-        for (char c : input.toCharArray()) {
+        for (final char c : input.toCharArray()) {
             switch (c) {
                 case '{':
                 case '[':
