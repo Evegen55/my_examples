@@ -33,4 +33,24 @@ public class CheckParenthesisTest {
         assertFalse(CheckParenthesis.check(input1));
     }
 
+    @Test
+    public void check5() throws Exception {
+        String input1 = "@Override\n" +
+                "    public void start(Stage primaryStage) throws Exception {\n" +
+                "        primaryStage.setTitle(\"Window with button\");\n" +
+                "\n" +
+                "        button = new Button();\n" +
+                "        button.setText(\"BIG BUTTON\");\n" +
+                "\n" +
+                "        StackPane stackPane = new StackPane();\n" +
+                "        stackPane.getChildren().add(button);\n" +
+                "\n" +
+                "        Scene scene = new Scene(stackPane, 200, 300);\n" +
+                "        primaryStage.setScene(scene);\n" +
+                "\n" +
+                "        primaryStage.show();\n" +
+                "    }";
+        assertTrue(CheckParenthesis.check(input1));
+    }
+
 }
