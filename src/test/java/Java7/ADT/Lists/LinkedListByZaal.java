@@ -1,11 +1,11 @@
-package Java7.ADT;
+package Java7.ADT.Lists;
 
 import java.util.Iterator;
 
 /**
  * @author Evgenii_Lartcev (created on 10/24/2016).
  */
-public class LinkedList<T> implements Iterable<T> {
+public class LinkedListByZaal<T> implements Iterable<T> {
 
     private Node<T> first;
     private Node<T> last;
