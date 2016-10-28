@@ -27,7 +27,8 @@ public class BinarySearchByMe {
     public BinarySearchByMe(long[] a) {
         this.a = a;
     }
-        
+
+    //because user doesn't have to know about a lower and an upper bounds of an array
     public int find(long searchKey) {
         return recFind(searchKey, 0, a.length-1);
     }
