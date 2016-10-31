@@ -1,4 +1,4 @@
-package Java7.ADT.Lists;
+package Java7.ADT.Lists.Homework;
 
 import java.util.Iterator;
 
