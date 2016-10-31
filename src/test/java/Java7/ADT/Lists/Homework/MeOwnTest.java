@@ -3,6 +3,8 @@ package Java7.ADT.Lists.Homework;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Iterator;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -36,6 +38,13 @@ public class MeOwnTest {
         for (int i = 0; i < myOwnList.size(); i++) {
             assertThat(myOwnList.recFindIndex(i, myOwnList.getTail()).getData(), is("String#" + i));
             assertTrue(myOwnList.recFindIndex(i, myOwnList.getTail()).getIndexNode() == i);
+        }
+    }
+
+    @Test
+    public void testIterator() {
+        for (String data : myOwnList) {
+            System.out.println(data);
         }
     }
 

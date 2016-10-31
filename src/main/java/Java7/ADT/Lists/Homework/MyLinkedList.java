@@ -1,6 +1,7 @@
 package Java7.ADT.Lists.Homework;
 
 import java.util.AbstractList;
+import java.util.Iterator;
 
 
 /**
@@ -9,7 +10,7 @@ import java.util.AbstractList;
  * @param <E> The type of the elements stored in the list
  * @author UC San Diego Intermediate Programming MOOC team
  */
-public class MyLinkedList<E> extends AbstractList<E> {
+public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
     private LLNode<E> head;
     private LLNode<E> tail;
     private int size;
@@ -174,6 +175,24 @@ public class MyLinkedList<E> extends AbstractList<E> {
         }
     }
 
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+            LLNode<E> current = head.getNext().getNext(); //because head and tail are supply the ADT
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public E next() {
+                E data = current.getData();
+                current = current.getNext();
+                return data;
+            }
+        };
+    }
+
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -292,4 +311,3 @@ class LLNode<E> {
     }
 }
 
-// TODO: 10/31/2016 implement iterator
