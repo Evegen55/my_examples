@@ -41,11 +41,21 @@ public class MeOwnTest {
         }
     }
 
-    @Test
-    public void testIterator() {
-        for (String data : myOwnList) {
-            System.out.println(data);
-        }
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void testExceptions1() {
+        myOwnList.get(6);
     }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void testExceptions2() {
+        myOwnList.get(-1);
+    }
+
+    @Test (expected = NullPointerException.class)
+    public void testExceptions3() {
+        myOwnList.add(null);
+    }
+
+
 
 }
