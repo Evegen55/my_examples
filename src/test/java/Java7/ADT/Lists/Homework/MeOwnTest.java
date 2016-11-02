@@ -3,15 +3,13 @@ package Java7.ADT.Lists.Homework;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Iterator;
-
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 public class MeOwnTest {
 
-    MyLinkedList<String> myOwnList;
+    private MyLinkedList<String> myOwnList;
 
     @Before
     public void setUp() {
@@ -56,6 +54,19 @@ public class MeOwnTest {
         myOwnList.add(null);
     }
 
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void testExceptions4() {
+        myOwnList.remove(-1);
+    }
 
+    @Test (expected = NullPointerException.class)
+    public void testExceptions5() {
+        myOwnList.set(2, null);
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void testExceptions6() {
+        myOwnList.set(-1, "new string");
+    }
 
 }

@@ -10,7 +10,7 @@ import java.util.Iterator;
  * @param <E> The type of the elements stored in the list
  * @author UC San Diego Intermediate Programming MOOC team
  */
-public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
+public class MyLinkedList<E> extends AbstractList<E> implements Iterable<E> {
     private LLNode<E> head;
     private LLNode<E> tail;
     private int size;
@@ -32,7 +32,7 @@ public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
         return head;
     }
 
-    public void setHead(LLNode<E> head) {
+    public void setHead(final LLNode<E> head) {
         this.head = head;
     }
 
@@ -40,7 +40,7 @@ public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
         return tail;
     }
 
-    public void setTail(LLNode<E> tail) {
+    public void setTail(final LLNode<E> tail) {
         this.tail = tail;
     }
 
@@ -55,7 +55,7 @@ public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
      *
      * @param element The element to add
      */
-    public boolean add(E element) {
+    public boolean add(final E element) {
         if (element == null) {
             throw new NullPointerException("Nulls not allowed");
         }
@@ -72,7 +72,7 @@ public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
      *
      * @throws IndexOutOfBoundsException if the index is out of bounds.
      */
-    public E get(int index) {
+    public E get(final int index) {
         LLNode<E> searchNode = recFindIndex(index, tail);
         if (size == 0) {
             throw new IndexOutOfBoundsException("Warning! You've just tried to get an object from empty list");
@@ -90,7 +90,7 @@ public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
      * @param index   where the element should be added
      * @param element The element to add
      */
-    public void add(int index, E element) {
+    public void add(final int index,final E element) {
         if (index < tail.getIndexNode()) {
             LLNode<E> searched = recFindIndex(index, this.tail);
             LLNode<E> beforeSearched = recFindIndex(index, this.tail).getPrev();
@@ -116,12 +116,15 @@ public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
      * @return The data element removed
      * @throws IndexOutOfBoundsException If index is outside the bounds of the list
      */
-    public E remove(int index) {
+    public E remove(final int index) {
+        if (index < 0 && index > size) {
+            throw new IndexOutOfBoundsException("Warning! You've just tried to remove an object out of bounds");
+        }
         recDecrIndexes(index + 1, tail);
-        LLNode<E> deletedNode = recFindIndex(index, this.tail).getPrev();
+        final LLNode<E> deletedNode = recFindIndex(index, this.tail).getPrev();
         E deletedData = deletedNode.getData();
-        LLNode<E> deletedNodeNext = deletedNode.getNext();
-        LLNode<E> deletedNodePrev = deletedNode.getPrev();
+        final LLNode<E> deletedNodeNext = deletedNode.getNext();
+        final LLNode<E> deletedNodePrev = deletedNode.getPrev();
         deletedNodeNext.setPrev(deletedNodePrev);
         deletedNodePrev.setNext(deletedNodeNext);
         size--;
@@ -135,15 +138,16 @@ public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
      * @param element The new element
      * @return The element that was replaced
      * @throws IndexOutOfBoundsException if the index is out of bounds.
+     * @throws NullPointerException      if the element is null.
      */
-    public E set(int index, E element) {
-        E deletedData;
+    public E set(final int index,final E element) {
+        final E deletedData;
         if (element == null) {
             throw new NullPointerException("Nulls not allowed");
         } else if (index < 0 && index > size) {
             throw new IndexOutOfBoundsException("Warning! You've just tried to add an object out of bounds");
         } else {
-            LLNode<E> settedNode = recFindIndex(index, this.tail);
+            final LLNode<E> settedNode = recFindIndex(index, this.tail);
             deletedData = settedNode.getData();
             settedNode.setData(element);
         }
@@ -179,6 +183,7 @@ public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
     public Iterator<E> iterator() {
         return new Iterator<E>() {
             LLNode<E> current = head.getNext().getNext(); //because head and tail are supply the ADT
+
             @Override
             public boolean hasNext() {
                 return current != null;
@@ -186,7 +191,7 @@ public class MyLinkedList<E> extends AbstractList<E>  implements Iterable<E> {
 
             @Override
             public E next() {
-                E data = current.getData();
+                final E data = current.getData();
                 current = current.getNext();
                 return data;
             }
@@ -208,12 +213,12 @@ class LLNode<E> {
         next = null;
     }
 
-    public LLNode(E e) {
+    public LLNode(final E e) {
         this();
         data = e;
     }
 
-    public LLNode(E e, LLNode<E> prevNode) {
+    public LLNode(final E e,final LLNode<E> prevNode) {
         data = e;
         //for SingleLinkedList
         this.next = prevNode.next;
@@ -227,7 +232,7 @@ class LLNode<E> {
         return prev;
     }
 
-    public void setPrev(LLNode<E> prev) {
+    public void setPrev(final LLNode<E> prev) {
         this.prev = prev;
     }
 
@@ -235,7 +240,7 @@ class LLNode<E> {
         return next;
     }
 
-    public void setNext(LLNode<E> next) {
+    public void setNext(final LLNode<E> next) {
         this.next = next;
     }
 
@@ -243,7 +248,7 @@ class LLNode<E> {
         return data;
     }
 
-    public void setData(E data) {
+    public void setData(final E data) {
         this.data = data;
     }
 
@@ -251,7 +256,7 @@ class LLNode<E> {
         return indexNode;
     }
 
-    public void setIndexNode(int indexNode) {
+    public void setIndexNode(final int indexNode) {
         this.indexNode = indexNode;
     }
 
@@ -291,7 +296,7 @@ class LLNode<E> {
                     ", data = " + data +
                     ", indexNode = " + indexNode +
                     '}';
-        }else if (next == null) {
+        } else if (next == null) {
             ret = "LLNode{" +
                     "prev data = " + prev.getData() +
                     ", next data = NULL" +
