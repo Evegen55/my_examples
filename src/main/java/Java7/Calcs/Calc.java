@@ -1,7 +1,7 @@
 /**
  * @author Lartsev
  */
-package Java7.examplescollect;
+package Java7.Calcs;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.math.*;
 import javax.swing.*;
 
-class Calc extends JFrame {
+public class Calc extends JFrame {
     BigDecimal firstValue;
     BigDecimal secondValue;
     String operation = "+";

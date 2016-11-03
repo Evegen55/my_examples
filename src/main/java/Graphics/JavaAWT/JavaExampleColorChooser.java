@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package examplescollect;
+package Graphics.JavaAWT;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -21,7 +21,7 @@ import javax.swing.event.ChangeListener;
 public class JavaExampleColorChooser extends JFrame implements ChangeListener {
     JLabel Lbl;
 
-    JavaExampleColorChooser(String TTL) {
+    public JavaExampleColorChooser(String TTL) {
         setTitle(TTL);
         setSize(550, 500);
         setLayout(new FlowLayout());

@@ -1,5 +1,6 @@
-package JavaFX;
+package Graphics.JavaFX;
 
+import Graphics.JavaAWT.JavaExampleColorChooser;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -20,7 +21,7 @@ public class HelloJavaFXWithButtonAndEvents extends Application implements Event
         primaryStage.setTitle("Window with button");
 
         button = new Button();
-        button.setText("BIG BUTTON");
+        button.setText("Choose color");
 
         //handle event
         button.setOnAction(this);
@@ -39,6 +40,7 @@ public class HelloJavaFXWithButtonAndEvents extends Application implements Event
         //do when event is done
         if (event.getSource() == button) {
             System.out.println("asdfhsd;fgjsdaf;sdjif;o");
+            new JavaExampleColorChooser("Java Color Chooser");
         }
     }
 

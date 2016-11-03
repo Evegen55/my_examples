@@ -14,7 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package Java7.examplescollect;
+package Java7.Calcs;
 
 /**
  * @author Evegen
@@ -22,8 +22,6 @@ package Java7.examplescollect;
 
 import java.awt.*;
 import java.lang.*;
-import java.awt.font.*;
-import java.awt.geom.*;
 import java.awt.event.*;
 import java.io.IOException;
 import javax.swing.*;

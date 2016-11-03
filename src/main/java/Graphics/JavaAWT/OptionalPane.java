@@ -1,4 +1,4 @@
-package Java7.examplescollect;
+package Graphics.JavaAWT;
 /**
  * Write a description of class OptionalPane here.
  *

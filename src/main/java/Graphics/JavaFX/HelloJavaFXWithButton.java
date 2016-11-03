@@ -1,4 +1,4 @@
-package JavaFX;
+package Graphics.JavaFX;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -7,28 +7,18 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
- * @author Evgenii_Lartcev (created on 10/14/2016).
+ * @author Evegen (create on 11.10.2016).
  */
-public class HelloJavaFXWithLambdas extends Application {
+public class HelloJavaFXWithButton extends Application {
 
     private Button button;
-
-    //now, it is necessary for handle events!
-    public static void main(String[] args) {
-        launch(args);
-    }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Window with button");
 
         button = new Button();
-        button.setText("BIG BUTTON WITH LAMBDAS");
-
-        //handle event
-        button.setOnAction(event -> {
-            System.out.println("asfgkasjdglkjsfg;oasdifhpo");
-        });
+        button.setText("BIG BUTTON");
 
         StackPane stackPane = new StackPane();
         stackPane.getChildren().add(button);
@@ -38,4 +28,9 @@ public class HelloJavaFXWithLambdas extends Application {
 
         primaryStage.show();
     }
+
+    //this is no necessary need - try t comment it
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 }
