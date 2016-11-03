@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package examplescollect;
+package Java7.examplescollect;
 
 import java.awt.Frame;
 import java.awt.event.WindowAdapter;
@@ -281,7 +281,7 @@ public class MaimJFrame extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        JavaExampleColorChooser javaExampleColorChooser = new JavaExampleColorChooser("Java Color Chooser");
+       // JavaExampleColorChooser javaExampleColorChooser = new JavaExampleColorChooser("Java Color Chooser");
     }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
