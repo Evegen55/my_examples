@@ -1,13 +1,13 @@
-package Java7.bubble_sort;
+package Java7.sort_algoritms;
 
 /**
  * @author Evgenii_Lartcev (created on 10/5/2016). *
  */
-public class SimpleSort {
+public class BubbleSort {
 
     private int[] arr;
 
-    public SimpleSort(int[] arr) {
+    public BubbleSort(int[] arr) {
         this.arr = arr;
     }
 

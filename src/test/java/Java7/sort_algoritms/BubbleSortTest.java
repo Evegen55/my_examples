@@ -1,4 +1,4 @@
-package Java7.bubble_sort;
+package Java7.sort_algoritms;
 
 import org.junit.After;
 import org.junit.Before;
@@ -10,49 +10,49 @@ import static org.junit.Assert.*;
 /**
  * @author Evgenii_Lartcev (created on 10/5/2016).
  */
-public class SimpleSortTest {
+public class BubbleSortTest {
 
-    private SimpleSort simpleSort;
+    private BubbleSort bubbleSort;
     private final int[] arrBeforeSort = {77, 99, 44, 55, 22, 88, 11};
     private final int[] arrAfterFirstIteration = {77, 44, 55, 22, 88, 11, 99};
     private final int[] arrAfterFullSorting = {11, 22, 44, 55, 77, 88, 99};
 
     @Before
     public void setUp() throws Exception {
-        simpleSort = new SimpleSort(arrBeforeSort);
+        bubbleSort = new BubbleSort(arrBeforeSort);
     }
 
     @After
     public void tearDown() throws Exception {
         System.out.println("==============================");
-        for (int i = 0; i < simpleSort.getArr().length; i++) {
-            System.out.print(simpleSort.getArr()[i] + "\t");
+        for (int i = 0; i < bubbleSort.getArr().length; i++) {
+            System.out.print(bubbleSort.getArr()[i] + "\t");
         }
         System.out.println("\n");
     }
 
     @Test
     public void bubbleSortFirstIteration() throws Exception {
-        simpleSort.bubbleSortFirstIteration();
-        assertThat(simpleSort.getArr(), is(arrAfterFirstIteration));
+        bubbleSort.bubbleSortFirstIteration();
+        assertThat(bubbleSort.getArr(), is(arrAfterFirstIteration));
     }
 
     @Test
     public void testBubbleSortAll() {
-        simpleSort.bubbleSortAll();
-        assertThat(simpleSort.getArr(), is(arrAfterFullSorting));
+        bubbleSort.bubbleSortAll();
+        assertThat(bubbleSort.getArr(), is(arrAfterFullSorting));
     }
 
     @Test
     public void selectionSort() {
-        simpleSort.selectionSort();
-        assertThat(simpleSort.getArr(), is(arrAfterFullSorting));
+        bubbleSort.selectionSort();
+        assertThat(bubbleSort.getArr(), is(arrAfterFullSorting));
     }
 
     @Test
     public void selectSort() throws Exception {
-        simpleSort.selectionSort();
-        assertThat(simpleSort.getArr(), is(arrAfterFullSorting));
+        bubbleSort.selectionSort();
+        assertThat(bubbleSort.getArr(), is(arrAfterFullSorting));
     }
 
 }
