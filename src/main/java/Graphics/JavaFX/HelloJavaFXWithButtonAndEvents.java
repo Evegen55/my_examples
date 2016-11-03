@@ -1,6 +1,7 @@
 package Graphics.JavaFX;
 
 import Graphics.JavaAWT.JavaExampleColorChooser;
+import Graphics.JavaAWT.OptionalPane;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -14,20 +15,26 @@ import javafx.stage.Stage;
  */
 public class HelloJavaFXWithButtonAndEvents extends Application implements EventHandler<ActionEvent> {
 
-    private Button button;
+    private Button buttonForChoosingColor;
+    private Button buttonForJPane;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Window with button");
+        primaryStage.setTitle("Window with buttonForChoosingColor");
 
-        button = new Button();
-        button.setText("Choose color");
+        buttonForChoosingColor = new Button();
+        buttonForJPane = new Button();
+        buttonForChoosingColor.setText("Choose color");
+        buttonForJPane.setText("Input password");
 
         //handle event
-        button.setOnAction(this);
+        buttonForChoosingColor.setOnAction(this);
+        buttonForJPane.setOnAction(this);
 
         StackPane stackPane = new StackPane();
-        stackPane.getChildren().add(button);
+        stackPane.getChildren().add(buttonForChoosingColor);
+
+        //stackPane.getChildren().add(buttonForJPane); // TODO: 11/3/2016  
 
         Scene scene = new Scene(stackPane, 200, 300);
         primaryStage.setScene(scene);
@@ -38,9 +45,11 @@ public class HelloJavaFXWithButtonAndEvents extends Application implements Event
     @Override
     public void handle(ActionEvent event) {
         //do when event is done
-        if (event.getSource() == button) {
-            System.out.println("asdfhsd;fgjsdaf;sdjif;o");
+        if (event.getSource() == buttonForChoosingColor) {
             new JavaExampleColorChooser("Java Color Chooser");
+        }
+        if (event.getSource() == buttonForJPane) {
+            OptionalPane.main(new String[]{});
         }
     }
 
