@@ -2,6 +2,7 @@ package Algorithms;
 
 /**
  * Created by Evegen on 06.11.2016.
+ * Under course taken on a www.coursera.org/learn/introduction-to-algorithms
  */
 public class UnionFind {
     int[] arrayConnected = {1, 2, 6, 9};
