@@ -25,7 +25,7 @@ public class JavaExampleColorChooser extends JFrame implements ChangeListener {
         setTitle(TTL);
         setSize(550, 500);
         setLayout(new FlowLayout());
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         Container Cntnr = getContentPane();
         Cntnr.setLayout(new BorderLayout());
