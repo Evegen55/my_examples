@@ -9,12 +9,12 @@ import java.util.Random;
 
 
 public class Columns extends Applet implements Runnable {
-    public static final int SL = 25;
-    public static final int TimeShift = 250;
-    public static final int FigToDrop = 33;
-    public static final int MinTimeShift = 200;
-    public static final int LeftBorder = 2;
-    public static final int TopBorder = 2;
+    private static final int SL = 25;
+    private static final int TIME_SHIFT = 250;
+    private static final int FIG_TO_DROP = 33;
+    private static final int MIN_TIME_SHIFT = 200;
+    private static final int LEFT_BORDER = 2;
+    private static final int TOP_BORDER = 2;
 
     private static final Random Random = new Random();
 
@@ -67,19 +67,19 @@ public class Columns extends Applet implements Runnable {
     void DrawBox(int x, int y, int c) {
         if (c == 0) {
             _gr.setColor(Color.black);
-            _gr.fillRect(LeftBorder + x * SL - SL, TopBorder + y * SL - SL, SL, SL);
-            _gr.drawRect(LeftBorder + x * SL - SL, TopBorder + y * SL - SL, SL, SL);
+            _gr.fillRect(LEFT_BORDER + x * SL - SL, TOP_BORDER + y * SL - SL, SL, SL);
+            _gr.drawRect(LEFT_BORDER + x * SL - SL, TOP_BORDER + y * SL - SL, SL, SL);
         } else if (c == 8) {
             _gr.setColor(Color.white);
-            _gr.drawRect(LeftBorder + x * SL - SL + 1, TopBorder + y * SL - SL + 1, SL - 2, SL - 2);
-            _gr.drawRect(LeftBorder + x * SL - SL + 2, TopBorder + y * SL - SL + 2, SL - 4, SL - 4);
+            _gr.drawRect(LEFT_BORDER + x * SL - SL + 1, TOP_BORDER + y * SL - SL + 1, SL - 2, SL - 2);
+            _gr.drawRect(LEFT_BORDER + x * SL - SL + 2, TOP_BORDER + y * SL - SL + 2, SL - 4, SL - 4);
             _gr.setColor(Color.black);
-            _gr.fillRect(LeftBorder + x * SL - SL + 3, TopBorder + y * SL - SL + 3, SL - 6, SL - 6);
+            _gr.fillRect(LEFT_BORDER + x * SL - SL + 3, TOP_BORDER + y * SL - SL + 3, SL - 6, SL - 6);
         } else {
             _gr.setColor(MyStyles[c]);
-            _gr.fillRect(LeftBorder + x * SL - SL, TopBorder + y * SL - SL, SL, SL);
+            _gr.fillRect(LEFT_BORDER + x * SL - SL, TOP_BORDER + y * SL - SL, SL, SL);
             _gr.setColor(Color.black);
-            _gr.drawRect(LeftBorder + x * SL - SL, TopBorder + y * SL - SL, SL, SL);
+            _gr.drawRect(LEFT_BORDER + x * SL - SL, TOP_BORDER + y * SL - SL, SL, SL);
         }
         //		g.setColor (Color.black);
     }
@@ -202,7 +202,7 @@ public class Columns extends Applet implements Runnable {
             setFig(new Figure(Random));
             DrawFigure(getFig());
             while ((getFig().y < Model.Depth - 2) && (getFieldNew()[getFig().x][getFig().y + 3] == 0)) {
-                if ((int) (System.currentTimeMillis() - tc) > (Model.MaxLevel - Level) * TimeShift + MinTimeShift) {
+                if ((int) (System.currentTimeMillis() - tc) > (Model.MaxLevel - Level) * TIME_SHIFT + MIN_TIME_SHIFT) {
                     tc = System.currentTimeMillis();
                     HideFigure(getFig());
                     getFig().y++;
@@ -271,7 +271,7 @@ public class Columns extends Applet implements Runnable {
                         }
                     }
                 }
-                while ((int) (System.currentTimeMillis() - tc) <= (Model.MaxLevel - Level) * TimeShift + MinTimeShift);
+                while ((int) (System.currentTimeMillis() - tc) <= (Model.MaxLevel - Level) * TIME_SHIFT + MIN_TIME_SHIFT);
             }
             ;
             PasteFigure(getFig());
@@ -284,7 +284,7 @@ public class Columns extends Applet implements Runnable {
                     DrawField(_gr);
                     Score += DScore;
                     ShowScore(_gr);
-                    if (k >= FigToDrop) {
+                    if (k >= FIG_TO_DROP) {
                         k = 0;
                         if (Level < Model.MaxLevel) Level++;
                         ShowLevel(_gr);
@@ -305,27 +305,27 @@ public class Columns extends Applet implements Runnable {
     void ShowHelp(Graphics g) {
         g.setColor(Color.black);
 
-        g.drawString(" Keys available:", 200 - LeftBorder, 102);
-        g.drawString("Roll Box Up:     ", 200 - LeftBorder, 118);
-        g.drawString("Roll Box Down:   ", 200 - LeftBorder, 128);
-        g.drawString("Figure Left:     ", 200 - LeftBorder, 138);
-        g.drawString("Figure Right:    ", 200 - LeftBorder, 148);
-        g.drawString("Level High/Low: +/-", 200 - LeftBorder, 158);
-        g.drawString("Drop Figure:   space", 200 - LeftBorder, 168);
-        g.drawString("Pause:           P", 200 - LeftBorder, 180);
-        g.drawString("Quit:     Esc or Q", 200 - LeftBorder, 190);
+        g.drawString(" Keys available:", 200 - LEFT_BORDER, 102);
+        g.drawString("Roll Box Up:     ", 200 - LEFT_BORDER, 118);
+        g.drawString("Roll Box Down:   ", 200 - LEFT_BORDER, 128);
+        g.drawString("Figure Left:     ", 200 - LEFT_BORDER, 138);
+        g.drawString("Figure Right:    ", 200 - LEFT_BORDER, 148);
+        g.drawString("Level High/Low: +/-", 200 - LEFT_BORDER, 158);
+        g.drawString("Drop Figure:   space", 200 - LEFT_BORDER, 168);
+        g.drawString("Pause:           P", 200 - LEFT_BORDER, 180);
+        g.drawString("Quit:     Esc or Q", 200 - LEFT_BORDER, 190);
     }
 
     void ShowLevel(Graphics g) {
         g.setColor(Color.black);
-        g.clearRect(LeftBorder + 100, 390, 100, 20);
-        g.drawString("Level: " + Level, LeftBorder + 100, 400);
+        g.clearRect(LEFT_BORDER + 100, 390, 100, 20);
+        g.drawString("Level: " + Level, LEFT_BORDER + 100, 400);
     }
 
     void ShowScore(Graphics g) {
         g.setColor(Color.black);
-        g.clearRect(LeftBorder, 390, 100, 20);
-        g.drawString("Score: " + Score, LeftBorder, 400);
+        g.clearRect(LEFT_BORDER, 390, 100, 20);
+        g.drawString("Score: " + Score, LEFT_BORDER, 400);
     }
 
     public void start() {
