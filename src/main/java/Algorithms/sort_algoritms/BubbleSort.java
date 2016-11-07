@@ -1,4 +1,4 @@
-package Java7.sort_algoritms;
+package Algorithms.sort_algoritms;
 
 /**
  * @author Evgenii_Lartcev (created on 10/5/2016). *

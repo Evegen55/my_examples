@@ -1,4 +1,4 @@
-package Java7.sort_algoritms;
+package Algorithms.sort_algoritms;
 
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package Java7.ADT.Lists.Homework;
+package Algorithms.ADT.Lists.Homework;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package Java7.binary_search;
+package Algorithms.binary_search;
 
 import org.junit.Before;
 import org.junit.Test;

@@ -1,4 +1,4 @@
-package Java7.ADT.Lists;
+package Algorithms.ADT.Lists;
 
 /**
  * @author Evgenii_Lartcev (created on 10/28/2016).

@@ -1,4 +1,4 @@
-package Java7.ADT;
+package Algorithms.ADT;
 
 import org.junit.Test;
 
