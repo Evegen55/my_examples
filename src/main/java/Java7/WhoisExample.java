@@ -8,8 +8,10 @@ import java.net.SocketException;
 /**
  * Created by Evegen on 07.11.2016.
  */
-public class WhoisExample{
-    /**Method to get domain WhoIs information using Apache Commons Net API
+public class WhoisExample {
+    /**
+     * Method to get domain WhoIs information using Apache Commons Net API
+     *
      * @param domainName
      * @return
      */
