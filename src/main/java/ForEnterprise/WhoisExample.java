@@ -1,4 +1,4 @@
-package Java7;
+package ForEnterprise;
 
 import org.apache.commons.net.whois.WhoisClient;
 

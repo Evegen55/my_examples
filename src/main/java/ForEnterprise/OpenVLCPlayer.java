@@ -1,4 +1,4 @@
-package Java7;
+package ForEnterprise;
 
 import java.awt.*;
 import java.net.URI;

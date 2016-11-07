@@ -1,3 +1,5 @@
+package ForEnterprise;
+
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;

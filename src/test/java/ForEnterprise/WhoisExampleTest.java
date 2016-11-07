@@ -1,8 +1,6 @@
-package Java7;
+package ForEnterprise;
 
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 /**
  * Created by Evegen on 07.11.2016.
