@@ -5,43 +5,47 @@ import Graphics.JavaAWT.OptionalPane;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 /**
- * @author Evgenii_Lartcev (created on 10/11/2016).
+ * @author Evgenii_Lartcev (created on 11/8/2016).
  */
-public class HelloJavaFXWithButtonAndEvents extends Application implements EventHandler<ActionEvent> {
+public class GridPaneWithButtons extends Application implements EventHandler<ActionEvent> {
 
     private Button buttonForChoosingColor;
     private Button buttonForJPane;
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Window with buttonForChoosingColor");
+    public void start(final Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Window with buttons");
 
         buttonForChoosingColor = new Button();
         buttonForJPane = new Button();
         buttonForChoosingColor.setText("Choose color");
-        buttonForJPane.setText("Input password with no events");
+        buttonForJPane.setText("Input passwd");
 
         //handle event
         buttonForChoosingColor.setOnAction(this);
         buttonForJPane.setOnAction(this);
 
-        //Stack pane allows you to place many nodes one on top of an other.
-        StackPane stackPane = new StackPane();
-        stackPane.getChildren().addAll(buttonForJPane, buttonForChoosingColor);
-        Scene scene = new Scene(stackPane, 200, 300);
+        //GridPane allows you to create a flexible grid of rows and columns and position each node in exact place.
+        final GridPane gridPane = new GridPane();
+        gridPane.setPadding(new Insets(10, 10, 10, 10));
+        gridPane.add(buttonForChoosingColor, 0, 0);
+        gridPane.add(buttonForJPane, 1, 2);
+        gridPane.setStyle("-fx-background-color: #87CEFA;");
+        final Scene scene = new Scene(gridPane, 400, 200);
         primaryStage.setScene(scene);
 
         primaryStage.show();
     }
 
     @Override
-    public void handle(ActionEvent event) {
+    public void handle(final ActionEvent event) {
         //do when event is done
         if (event.getSource() == buttonForChoosingColor) {
             new JavaExampleColorChooser("Java Color Chooser");
