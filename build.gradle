@@ -37,6 +37,11 @@ dependencies {
 
     compile name: 'sqljdbc42'
 
+    compile name: 'comp102x_lib v2.1x'
+    compile name: 'core-2.3-SNAPSHOT'
+    compile name: 'tess4j'
+    compile name: 'javase-2.3-SNAPSHOT'
+
     compile name: 'courserajava'
     //https://github.com/google/guava
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
