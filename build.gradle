@@ -37,6 +37,7 @@ dependencies {
 
     compile name: 'sqljdbc42'
 
+    //for barcode example
     compile name: 'comp102x_lib v2.1x'
     compile name: 'core-2.3-SNAPSHOT'
     compile name: 'tess4j'
