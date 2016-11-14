@@ -11,6 +11,8 @@ package Algorithms.ROBERT_SEDGEWICK.Assignment_1_Percolation;
  * import edu.princeton.cs.algs4.WeightedQuickUnionUF;
  * Note that your code should be in the default package; if you use a package statement,
  * the autograder will not be able to assess your work.
+ *
+ * @see <a href = "http://coursera.cs.princeton.edu/algs4/assignments/percolation.html"> </a>
  */
 public class Ex {
 }
