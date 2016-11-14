@@ -172,7 +172,8 @@ public class Columns extends Applet implements Runnable {
 
     public void run() {
         setupGame();
-
+        graphics.setColor(Color.black);
+        requestFocus();
         do {
             tc = System.currentTimeMillis();
             setFig(new Figure(Random));
@@ -271,18 +272,17 @@ public class Columns extends Applet implements Runnable {
     }
 
     private void setupGame() {
-        for (i = 0; i < Model.Width + 1; i++) {
-            for (j = 0; j < Model.Depth + 1; j++) {
+        for (int i = 0; i < Model.Width + 1; i++) {
+            for (int j = 0; j < Model.Depth + 1; j++) {
                 getFieldNew()[i][j] = 0;
                 getFieldOld()[i][j] = 0;
             }
         }
         Level = 0;
         Score = 0;
-        j = 0;
+       // j = 0;
         k = 0;
-        graphics.setColor(Color.black);
-        requestFocus();
+
     }
 
     private void setFig(Figure figure) {

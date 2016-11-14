@@ -43,6 +43,8 @@ dependencies {
     compile name: 'tess4j'
     compile name: 'javase-2.3-SNAPSHOT'
 
+    compile name: 'algs4'
+
     compile name: 'courserajava'
     //https://github.com/google/guava
     compile group: 'com.google.guava', name: 'guava', version: '19.0'
