@@ -1,4 +1,4 @@
-package Algorithms;
+package Algorithms.ROBERT_SEDGEWICK;
 
 import java.util.Random;
 

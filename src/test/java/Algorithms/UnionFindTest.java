@@ -1,5 +1,6 @@
 package Algorithms;
 
+import Algorithms.ROBERT_SEDGEWICK.UnionFind;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

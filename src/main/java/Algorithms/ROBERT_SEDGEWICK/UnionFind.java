@@ -1,4 +1,4 @@
-package Algorithms;
+package Algorithms.ROBERT_SEDGEWICK;
 
 /**
  * Created by Evegen on 06.11.2016.
