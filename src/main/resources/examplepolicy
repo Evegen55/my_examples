@@ -4,8 +4,7 @@
 grant codeBase "https://docs.oracle.com/javase/tutorial/security/tour1/examples/" {
 };
 
-grant codeBase "file:/d:/11_work_spaces/git/my_examples/src/main/java/security/" {
+grant codeBase "file:c:/Test/" {
   permission java.util.PropertyPermission "user.home", "read";
   permission java.util.PropertyPermission "java.home", "read";
 };
-

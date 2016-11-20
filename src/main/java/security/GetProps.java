@@ -27,17 +27,29 @@ package security;/*
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
 import java.lang.*;
 import java.security.*;
 
 class GetProps {
 
+    /*
+    Copy this file in the c:\Test\ folder (Windows)
+    next Navigate to the folder
+    next try it with with -Djava.security.manager VM parameter
+    You probably see next lines:
+            "break in console is not supported due to security permissions: access denied ("java.util.PropertyPermission" "idea.launcher.bin.path" "read")
+            Exception in thread "main" java.security.AccessControlException: access denied ("java.lang.reflect.ReflectPermission" "suppressAccessChecks")"
+    Then copy \main\resources\examplepolicy file in the c:\Test\ folder
+    Try it run with -Djava.security.manager -Djava.security.policy=examplepolicy VM parameters
+    It must allow to get this properties. See http://docs.oracle.com/javase/tutorial/security/tour2/step4.html
+
+     */
     public static void main(String[] args) {
 
         /* Test reading properties w & w/out security manager */
-        
+
         String s;
 
         try {
