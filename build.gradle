@@ -45,6 +45,9 @@ dependencies {
     compile name: 'tess4j'
     compile name: 'javase-2.3-SNAPSHOT'
 
+    //for open_cv
+    compile name: 'opencv-2413'
+
     compile name: 'algs4'
     // https://mvnrepository.com/artifact/com.google.code.findbugs/findbugs
     compile group: 'com.google.code.findbugs', name: 'findbugs', version: '3.0.1'
