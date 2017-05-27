@@ -1,4 +1,4 @@
-// Fig. 2.4: Welcome3.java
+package Java8_by_Deitel.ch02.fig02_04;// Fig. 2.4: Welcome3.java
 // Printing multiple lines with a single statement.
 
 public class Welcome3 

@@ -1,4 +1,4 @@
-// Fig. 2.3: Welcome2.java
+package Java8_by_Deitel.ch02.fig02_03;// Fig. 2.3: Welcome2.java
 // Printing a line of text with multiple statements.
 
 public class Welcome2 

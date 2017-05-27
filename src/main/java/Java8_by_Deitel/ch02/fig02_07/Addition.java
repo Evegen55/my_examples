@@ -1,4 +1,4 @@
-// Fig. 2.7: Addition.java
+package Java8_by_Deitel.ch02.fig02_07;// Fig. 2.7: Addition.java
 // Addition program that displays the sum of two numbers.
 import java.util.Scanner; // program uses class Scanner
 

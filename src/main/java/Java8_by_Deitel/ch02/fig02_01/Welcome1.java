@@ -1,4 +1,4 @@
-// Fig. 2.1: Welcome1.java
+package Java8_by_Deitel.ch02.fig02_01;// Fig. 2.1: Welcome1.java
 // Text-printing program.
 
 public class Welcome1  
