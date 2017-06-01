@@ -64,6 +64,8 @@ dependencies {
     // https://mvnrepository.com/artifact/commons-net/commons-net
     compile group: 'commons-net', name: 'commons-net', version: '+'
 
+    compile group: 'com.google.cloud', name: 'google-cloud-pubsub', version: '0.17.2-alpha'
+
     testCompile group: 'junit', name: 'junit', version: '4.11'
 
     // https://mvnrepository.com/artifact/org.mockito/mockito-core
