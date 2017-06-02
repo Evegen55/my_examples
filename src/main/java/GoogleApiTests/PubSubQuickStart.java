@@ -21,33 +21,33 @@ public class PubSubQuickStart {
         String topicId = "my-new-topic";
 
         final GoogleCredentials googleCredentials = GoogleCredentials
-                .fromStream(PubSubQuickStart.class.getClassLoader().getResourceAsStream("M*.json"));
+                .fromStream(PubSubQuickStart.class.getClassLoader().getResourceAsStream("My Project-504e19426008.json"));
+        System.out.println(googleCredentials);
 
         final InstantiatingChannelProvider channelProvider = TopicAdminSettings
                 .defaultChannelProviderBuilder()
                 .setCredentialsProvider(FixedCredentialsProvider.create(googleCredentials))
                 .build();
 
+        System.out.println(channelProvider.getEndpoint());
+
         final TopicAdminSettings topicAdminSettings = TopicAdminSettings
                 .defaultBuilder()
                 .setChannelProvider(channelProvider)
                 .build();
 
-        TopicAdminClient topicAdminClient_main = null;
-
         // Create a new topic
         TopicName topic = TopicName.create(projectId, topicId);
         try (TopicAdminClient topicAdminClient = TopicAdminClient.create(topicAdminSettings)) {
             topicAdminClient.createTopic(topic);
-            topicAdminClient_main = topicAdminClient;
+            System.out.printf("Topic %s:%s created.\n", topic.getProject(), topic.getTopic(), topic);
         }
-
-        System.out.printf("Topic %s:%s created.\n", topic.getProject(), topic.getTopic(), topic);
 
 
         //delete topic
         try (TopicAdminClient topicAdminClient = TopicAdminClient.create(topicAdminSettings)) {
             topicAdminClient.deleteTopic(topic);
+            System.out.printf("Topic %s:%s deleted.\n", topic.getProject(), topic.getTopic(), topic);
         }
 
 
