@@ -119,8 +119,8 @@ public class PubSubQuickStart {
             PubsubMessage pubsubMessage = PubsubMessage.newBuilder().setData(data).build();
             messageIdFuture = publisher.publish(pubsubMessage);
 
-            System.out.println(messageIdFuture.isDone());
-            System.out.println(messageIdFuture.get());
+            System.out.println("messageIdFuture.isDone() + \t + " + messageIdFuture.isDone());
+            System.out.println("message with id: + \t + " + messageIdFuture.get());
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -134,8 +134,8 @@ public class PubSubQuickStart {
             }
         }
 
-        System.out.println(messageIdFuture.isDone());
-        System.out.println(messageIdFuture.get());
+        System.out.println("messageIdFuture.isDone() + \t + " + messageIdFuture.isDone());
+        System.out.println("message with id: + \t + " + messageIdFuture.get());
 
         return messageIdFuture;
     }
@@ -181,6 +181,7 @@ public class PubSubQuickStart {
 
     /**
      * We have to use multithreading
+     *
      * @param subscriptionName
      */
     public static void pull(final SubscriptionName subscriptionName, final SubscriptionAdminSettings subscriptionAdminSettings) {
