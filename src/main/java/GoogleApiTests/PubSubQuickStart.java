@@ -71,7 +71,7 @@ public class PubSubQuickStart {
 //        }
 
         //publish message in a topic
-        final ApiFuture<String> stringApiFuture = publishMessageInTopic(topicAdminSettings, topic, "MESSAGE");
+//        final ApiFuture<String> stringApiFuture = publishMessageInTopic(topicAdminSettings, topic, "MESSAGE");
 
         //create subscription. It needs SubscriptionAdminSettings
         SubscriptionAdminSettings subscriptionAdminSettings = SubscriptionAdminSettings
@@ -80,6 +80,12 @@ public class PubSubQuickStart {
                 .build();
         final Subscription subscription = createSubscription(topic, subscriptionAdminSettings, projectId);
         System.out.println(subscription);
+
+        //pull message from subscription
+        System.out.println("======================================");
+        //create subscription. It needs SubscriptionAdminSettings
+        pull(subscription.getNameAsSubscriptionName(), subscriptionAdminSettings);
+        System.out.println("======================================");
 
         //delete topic
         try (TopicAdminClient topicAdminClient = TopicAdminClient.create(topicAdminSettings)) {
@@ -174,9 +180,10 @@ public class PubSubQuickStart {
 
 
     /**
+     * We have to use multithreading
      * @param subscriptionName
      */
-    public static void pull(SubscriptionName subscriptionName) {
+    public static void pull(final SubscriptionName subscriptionName, final SubscriptionAdminSettings subscriptionAdminSettings) {
         MessageReceiver receiver =
                 new MessageReceiver() {
                     @Override
@@ -187,7 +194,10 @@ public class PubSubQuickStart {
                 };
         Subscriber subscriber = null;
         try {
-            subscriber = Subscriber.defaultBuilder(subscriptionName, receiver).build();
+            subscriber = Subscriber
+                    .defaultBuilder(subscriptionName, receiver)
+                    .setChannelProvider(subscriptionAdminSettings.getChannelProvider())
+                    .build();
             subscriber.addListener(
                     new Subscriber.Listener() {
                         @Override
@@ -198,6 +208,9 @@ public class PubSubQuickStart {
                     },
                     MoreExecutors.directExecutor());
             subscriber.startAsync().awaitRunning();
+            Thread.sleep(60000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         } finally {
             if (subscriber != null) {
                 subscriber.stopAsync();
