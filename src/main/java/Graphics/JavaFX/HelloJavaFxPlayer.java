@@ -18,6 +18,8 @@ public class HelloJavaFxPlayer extends Application {
 
     private Logger logger = Logger.getLogger(HelloJavaFxPlayer.class.getName());
 
+    private File audioFile;
+
     public HelloJavaFxPlayer() {
     }
 
@@ -30,17 +32,16 @@ public class HelloJavaFxPlayer extends Application {
         logger.info("Inside start method");
         final Group group = new Group();
 
-        final File file = new File("src/main/resources/GoPro_Diving_with_Ocean_Hounds/GoPro_Diving_with_Ocean_Hounds_126k.m4a");
-        final String absolutePath = file.toURI().getPath();
+        audioFile = new File("src/main/resources/GoPro_Diving_with_Ocean_Hounds/GoPro_Diving_with_Ocean_Hounds_126k.m4a");
 
-        final Media mediaSoundM4a = new Media("file:///" + absolutePath);
+        final Media mediaSoundM4a = new Media("file:///" + audioFile.toURI().getPath());
         logger.info("mediaSoundM4a opened " + mediaSoundM4a.getSource());
         final MediaPlayer mediaPlayer = new MediaPlayer(mediaSoundM4a);
         final MediaView mediaView = new MediaView(mediaPlayer);
         group.getChildren().add(mediaView);
         final Scene scene = new Scene(group, 800, 100, Color.BLACK);
 
-        primaryStage.setTitle("Window with player");
+        primaryStage.setTitle("Window with audio player");
         primaryStage.setScene(scene);
         primaryStage.show();
         logger.info("Start to play");
