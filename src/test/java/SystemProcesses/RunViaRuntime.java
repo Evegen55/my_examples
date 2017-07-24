@@ -1,4 +1,6 @@
-package ForEnterprise;
+package SystemProcesses;
+
+import org.junit.Test;
 
 import java.io.IOException;
 
@@ -7,8 +9,8 @@ import java.io.IOException;
  */
 public class RunViaRuntime {
 
-    public static void main(String[] args) throws IOException {
-        final String[] params = new String[2];
+    @Test
+    public void test() throws IOException {
         Runtime.getRuntime().exec("calc");  //we can put parameters here
     }
 }

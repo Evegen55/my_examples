@@ -1,4 +1,6 @@
-package ForEnterprise;
+package SystemProcesses;
+
+import org.junit.Test;
 
 import java.awt.*;
 import java.net.URI;
@@ -11,13 +13,12 @@ public class OpenVLCPlayer {
      * @link: http://www.instanceofjava.com
      * how to open a webpage in browser using java code
      */
-
-    public static void main(String[] args)  {
-
+    @Test
+    public void test() {
 
         try {
 
-            URI uri= new URI("http://www.instanceofjava.com");
+            URI uri = new URI("http://www.instanceofjava.com");
 
             Desktop.getDesktop().browse(uri);
             System.out.println("Web page opened in browser");
