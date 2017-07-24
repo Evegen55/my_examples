@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorinterval="30" status="info" strict="true">
+    <Properties>
+        <Property name="filePattern">${sys:user.home}/logs/$${date:yyyy-MM}/my-examples-%i.log.gz</Property>
+        <Property name="info-filename">${sys:user.home}/logs/info.log</Property>
+        <property name="pattern">%-5p [%d{yyyy-MM-dd HH:mm:ss.SSS}][%t][%c] %m%n</property>
+    </Properties>
+    <Appenders>
+
+        <Console name="stdout" target="SYSTEM_OUT">
+            <Layout type="PatternLayout" pattern="${pattern}"/>
+        </Console>
+
+        <RollingFile name="info-appender" fileName="${info-filename}" filePattern="${filePattern}">
+            <Layout type="PatternLayout" pattern="${pattern}"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="info-appender" level="info" />
+            <AppenderRef ref="stdout" level="debug"/>
+        </Root>
+    </Loggers>
+</Configuration>

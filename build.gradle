@@ -74,6 +74,18 @@ dependencies {
     // https://mvnrepository.com/artifact/org.mockito/mockito-all
     testCompile group: 'org.mockito', name: 'mockito-all', version: '+'
 
+    compile group: 'org.zeroturnaround', name: 'zt-exec', version: '1.9'
+
+    //logging
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    compile group: 'org.slf4j', name: 'slf4j-ext', version: '1.7.25'
+    //Binding for Log4J
+    compile group: 'org.apache.logging.log4j', name: 'log4j-slf4j-impl', version: '2.8.1'
+    //Log4j API and Core implementation required for binding
+    compile group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.8.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.8.1'
+    compile group: 'org.apache.logging.log4j', name: 'log4j-web', version: '2.8.1'
+
 }
 
 // creating javadoc task for test code
