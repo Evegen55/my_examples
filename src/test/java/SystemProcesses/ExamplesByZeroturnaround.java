@@ -25,4 +25,20 @@ public class ExamplesByZeroturnaround {
                 .outputString();
         logger.info(java_version);
     }
+
+    @Test
+    public void testStorage() throws InterruptedException, TimeoutException, IOException {
+        final String notification = new ProcessExecutor()
+                .command("gsutil.cmd", "notification", "create", "-f", "json", "gs://dev-epm-2")
+                .readOutput(true)
+                .execute()
+                .outputString();
+        logger.info(notification);
+    }
+
+    @Test
+    public void testObf(){
+        int a = 2;
+        logger.info("{}", a -= a *= a);
+    }
 }
