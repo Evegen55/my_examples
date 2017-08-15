@@ -26,14 +26,14 @@ public class StaXParser {
     static final String INTERACTIVE = "interactive";
 
     @SuppressWarnings({ "unchecked", "null" })
-    public List<Item> readConfig(String configFile) {
+    public List<Item> readConfig(final String configFile) {
         List<Item> items = new ArrayList<Item>();
         try {
             // First, create a new XMLInputFactory
-            XMLInputFactory inputFactory = XMLInputFactory.newInstance();
+            final XMLInputFactory inputFactory = XMLInputFactory.newInstance();
             // Setup a new eventReader
-            InputStream in = new FileInputStream(configFile);
-            XMLEventReader eventReader = inputFactory.createXMLEventReader(in);
+            final InputStream in = new FileInputStream(configFile);
+            final XMLEventReader eventReader = inputFactory.createXMLEventReader(in);
             // read the XML document
             Item item = null;
 
