@@ -8,6 +8,7 @@ public class SimpleClass implements SimpleInterface {
     @Override
     public String doSmthWith(String param) {
         System.out.println("abc");
+        System.out.println(param);
         this.methodMy();
         return null;
     }

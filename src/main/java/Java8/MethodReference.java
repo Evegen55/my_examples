@@ -3,6 +3,7 @@ package Java8;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Consumer;
 
 import static java.util.stream.Collectors.toList;
 
@@ -33,7 +34,9 @@ public class MethodReference {
 
         collect2.forEach(System.out::println);
 
-
+        System.out.println("\t\tnext example:");
+        Consumer<String> stringConsumer = System.out::println;
+        stringConsumer.accept("Hello");
 
     }
 
