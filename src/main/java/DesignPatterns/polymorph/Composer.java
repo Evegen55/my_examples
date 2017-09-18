@@ -3,19 +3,16 @@ package DesignPatterns.polymorph;
 /**
  * @author (created on 9/18/2017).
  */
-public class Composer {
+public abstract class Composer {
 
-    Event eventBirthday = new Birthday();
-//    Event eventNewYears = new NewYears();
-
-    Announcer englishAnnouncer = new EnglishAnnouncer();
-//    Announcer italianAnnouncer = new ItalianAnnouncer();
+    protected Event event;
+    protected Announcer announcer;
 
     public Event getEvent() {
-        return eventBirthday;
+        return event;
     }
 
     public Announcer getAnnouncer() {
-        return englishAnnouncer;
+        return announcer;
     }
 }

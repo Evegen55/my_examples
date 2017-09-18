@@ -6,6 +6,7 @@ package DesignPatterns.polymorph;
 public class NewYears implements Event {
     @Override
     public void announce(Announcer announcer) {
-        announcer.announce(this);
+        final String announce = announcer.announce(this);
+        System.out.println(announce);
     }
 }
