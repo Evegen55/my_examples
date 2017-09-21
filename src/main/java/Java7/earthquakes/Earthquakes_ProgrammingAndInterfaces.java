@@ -14,26 +14,6 @@ package Java7.earthquakes;
 public class Earthquakes_ProgrammingAndInterfaces {
     
     //test package EarthquakeMagnitudeDistanceDemo
-
-    /**
-     *
-     */
-    public void test1(){
-        EarthQuakeClient s = new EarthQuakeClient();
-        //s.createCSV();
-        //s.bigQuakes();
-        //s.closeToMe();
-        //s.quakesOfDepth();
-        s.quakesByPhrase();
-    }
-
-    /**
-     *
-     */
-    public void quakesRu(){
-        EarthQuakeClient s = new EarthQuakeClient();
-        s.allQuaqesRussia();
-    }
     
     /**
      *
@@ -88,9 +68,7 @@ public class Earthquakes_ProgrammingAndInterfaces {
     public static void main(String[] args) {
         // TODO code application logic here
         Earthquakes_ProgrammingAndInterfaces d = new Earthquakes_ProgrammingAndInterfaces();
-        //quakes in Russia
-        d.quakesRu();
-        
+
         //test package EarthquakeMagnitudeDistanceDemo
         //d.test1();
         //d.test2();
