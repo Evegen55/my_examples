@@ -2,8 +2,12 @@ package Java7.earthquakes;
 
 import java.util.*;
 
-import Java7.earthquakes.QuakeEntry;
-import edu.duke.*;
+import Java7.earthquakes.filters.DepthFilter;
+import Java7.earthquakes.filters.DistanceFilter;
+import Java7.earthquakes.filters.Filter;
+import Java7.earthquakes.filters.MagnitudeFilter;
+import Java7.earthquakes.filters.MatchAllFilter;
+import Java7.earthquakes.filters.PhraseFilter;
 
 /**
  *
@@ -39,7 +43,7 @@ public class EarthQuakeClient2
      *
      */
     public void quakesWithFilter() { 
-        EarthQuakeParser parser = new EarthQuakeParser(); 
+        EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedatasmall.atom";
         String source = "data/nov20quakedata.atom";
@@ -81,7 +85,7 @@ public class EarthQuakeClient2
      *
      */
     public void testMatchAllFilter () {
-        EarthQuakeParser parser = new EarthQuakeParser(); 
+        EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedatasmall.atom";
         String source = "data/nov20quakedata.atom";
@@ -108,7 +112,7 @@ public class EarthQuakeClient2
      *
      */
     public void testMatchAllFilter2 () {
-        EarthQuakeParser parser = new EarthQuakeParser(); 
+        EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedatasmall.atom";
         String source = "data/nov20quakedata.atom";

@@ -3,47 +3,47 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java7.earthquakes;
+package Java7.earthquakes.filters;
+
+import Java7.earthquakes.QuakeEntry;
 
 import java.util.ArrayList;
 
 /**
- *
  * @author Lartsev
  */
 public class MatchAllFilter implements Filter {
+
     private ArrayList<Filter> arf;
-    
+
     /**
      *
      */
     public MatchAllFilter() {
         arf = new ArrayList<>();
     }
+
     /**
-     * 
-     * @param f 
+     * @param f
      */
     public void addFilter(Filter f) {
         arf.add(f);
     }
-    
+
     /**
-     *
-     * @param qe
+     * @param quakeEntry
      * @return
      */
     @Override
-    public boolean satisfies(QuakeEntry qe) {
+    public boolean satisfies(QuakeEntry quakeEntry) {
         boolean ret = true;
         for (Filter fl : arf) {
-            ret = ret && fl.satisfies(qe);
-            }
+            ret = ret && fl.satisfies(quakeEntry);
+        }
         return ret;
     }
 
     /**
-     *
      * @return
      */
     @Override
@@ -52,8 +52,8 @@ public class MatchAllFilter implements Filter {
         for (Filter fl : arf) {
             sb.append(fl.getName());
             sb.append("\t");
-            }
+        }
         return sb.toString();
     }
-    
+
 }

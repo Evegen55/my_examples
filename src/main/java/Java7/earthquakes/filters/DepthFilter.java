@@ -3,27 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java7.earthquakes;
+package Java7.earthquakes.filters;
+
+import Java7.earthquakes.QuakeEntry;
 
 /**
- *
  * @author Lartsev
  */
-public class DepthFilter implements Filter{
+public class DepthFilter implements Filter {
+
     private double minDepth;
     private double maxDepth;
-    
+
     /**
-     *
-     */
-    public DepthFilter() {
-        minDepth = 0;
-        minDepth = 0;
-    }
-    /**
-     * 
      * @param min
-     * @param max 
+     * @param max
      */
     public DepthFilter(double min, double max) {
         this.minDepth = min;
@@ -31,20 +25,15 @@ public class DepthFilter implements Filter{
     }
 
     /**
-     *
-     * @param qe
+     * @param quakeEntry
      * @return
      */
     @Override
-    public boolean satisfies(QuakeEntry qe) {
-        if (qe.getDepth()>minDepth && qe.getDepth()<maxDepth) {
-            return true;                                                           
-        } else 
-        return false;
+    public boolean satisfies(final QuakeEntry quakeEntry) {
+        return quakeEntry.getDepth() > minDepth && quakeEntry.getDepth() < maxDepth;
     }
 
     /**
-     *
      * @return
      */
     @Override
