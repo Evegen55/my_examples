@@ -9,6 +9,9 @@ package Java7.earthquakes;
  */
 
 
+import Java7.earthquakes.model.Location;
+import Java7.earthquakes.model.QuakeEntry;
+
 import java.util.*;
 
 /**

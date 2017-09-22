@@ -8,6 +8,8 @@ import Java7.earthquakes.filters.Filter;
 import Java7.earthquakes.filters.MagnitudeFilter;
 import Java7.earthquakes.filters.MatchAllFilter;
 import Java7.earthquakes.filters.PhraseFilter;
+import Java7.earthquakes.model.Location;
+import Java7.earthquakes.model.QuakeEntry;
 
 /**
  *

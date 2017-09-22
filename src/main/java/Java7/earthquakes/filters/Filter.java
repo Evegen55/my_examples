@@ -1,7 +1,7 @@
 package Java7.earthquakes.filters;
 
 
-import Java7.earthquakes.QuakeEntry;
+import Java7.earthquakes.model.QuakeEntry;
 
 /**
  * Write a description of interface Filter here.

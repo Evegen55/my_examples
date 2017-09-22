@@ -1,9 +1,10 @@
 package Java7.earthquakes;
 
+import Java7.earthquakes.model.Location;
 import org.junit.Before;
 import org.junit.Test;
 
-import static Java7.earthquakes.Location.*;
+import static Java7.earthquakes.model.Location.*;
 import static org.junit.Assert.*;
 
 /**

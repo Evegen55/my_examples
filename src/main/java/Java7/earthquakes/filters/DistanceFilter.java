@@ -5,8 +5,8 @@
  */
 package Java7.earthquakes.filters;
 
-import Java7.earthquakes.Location;
-import Java7.earthquakes.QuakeEntry;
+import Java7.earthquakes.model.Location;
+import Java7.earthquakes.model.QuakeEntry;
 
 /**
  * @author Lartsev

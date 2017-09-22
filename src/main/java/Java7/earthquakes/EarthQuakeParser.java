@@ -1,6 +1,7 @@
 package Java7.earthquakes;
 
 
+import Java7.earthquakes.model.QuakeEntry;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

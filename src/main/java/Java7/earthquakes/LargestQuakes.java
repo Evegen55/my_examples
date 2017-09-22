@@ -5,6 +5,8 @@
  */
 package Java7.earthquakes;
 
+import Java7.earthquakes.model.QuakeEntry;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;

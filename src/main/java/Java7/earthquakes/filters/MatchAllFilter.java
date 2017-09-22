@@ -5,7 +5,7 @@
  */
 package Java7.earthquakes.filters;
 
-import Java7.earthquakes.QuakeEntry;
+import Java7.earthquakes.model.QuakeEntry;
 
 import java.util.ArrayList;
 
