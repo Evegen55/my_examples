@@ -144,6 +144,7 @@ public class Location {
      * Sets the contents of the location to the values from the given location.
      *
      * @param location
+     * @return location before set
      */
     public void set(final Location location) {
         this.mProvider = location.mProvider;
@@ -181,6 +182,7 @@ public class Location {
         this.mAccuracy = 0;
         this.mIsFromMockProvider = false;
     }
+
 
     /**
      * Converts a coordinate to a String representation. The outputType

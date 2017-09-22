@@ -3,8 +3,8 @@ package Java7.earthquakes;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import static Java7.earthquakes.Location.*;
+import static org.junit.Assert.*;
 
 /**
  * @author (created on 9/22/2017).
@@ -14,9 +14,12 @@ public class LocationTest {
     private Location denver;
     private Location billund;
 
+    private final static double coordinateLatitudeDenver = 39.7392;
+    private final static double coordinateLongitudeDenver = -104.9903;
+
     @Before
     public void test() {
-        denver = new Location(39.7392, -104.9903);
+        denver = new Location(coordinateLatitudeDenver, coordinateLongitudeDenver);
         billund = new Location(55.7308, 9.1153);
     }
 
@@ -37,10 +40,22 @@ public class LocationTest {
 
     @Test
     public void convert() throws Exception {
+        String convert = Location.convert(coordinateLatitudeDenver, FORMAT_DEGREES);
+        assertEquals("39.7392", convert);
+        convert = Location.convert(coordinateLatitudeDenver, FORMAT_MINUTES);
+        assertEquals("39:44.352", convert);
+        convert = Location.convert(coordinateLatitudeDenver, FORMAT_SECONDS);
+        assertEquals("39:44:21.12", convert);
     }
 
     @Test
-    public void convert1() throws Exception {
+    public void convertToDouble() throws Exception {
+        final double convert = Location.convert("39:44:21.12");
+        final double convert2 = Location.convert("39.7392");
+        final double convert3 = Location.convert("39.7392");
+        assertTrue(convert == coordinateLatitudeDenver
+                && convert2 == coordinateLatitudeDenver
+                && convert3 == coordinateLatitudeDenver);
     }
 
     @Test
