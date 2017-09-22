@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Java7.earthquakes;
+package Java7.earthquakes.algorithms_and_tasks;
 
 import Java7.earthquakes.model.QuakeEntry;
 

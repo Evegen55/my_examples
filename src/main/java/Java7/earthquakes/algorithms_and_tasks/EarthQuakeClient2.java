@@ -1,4 +1,4 @@
-package Java7.earthquakes;
+package Java7.earthquakes.algorithms_and_tasks;
 
 import java.util.*;
 

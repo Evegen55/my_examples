@@ -9,7 +9,6 @@ package Java7.earthquakes.algorithms_and_tasks;
  */
 
 
-import Java7.earthquakes.EarthQuakeParser;
 import Java7.earthquakes.model.Location;
 import Java7.earthquakes.model.QuakeEntry;
 

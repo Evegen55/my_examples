@@ -1,12 +1,13 @@
 package Java7.earthquakes;
 
+import Java7.earthquakes.algorithms_and_tasks.EarthQuakeParser;
 import Java7.earthquakes.model.QuakeEntry;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import static Java7.earthquakes.EarthQuakeClient.SOURCE_PAST_WEEK;
+import static Java7.earthquakes.algorithms_and_tasks.EarthQuakeClient.SOURCE_PAST_WEEK;
 
 /**
  * @author (created on 9/21/2017).
