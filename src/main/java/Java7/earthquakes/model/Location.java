@@ -1,4 +1,4 @@
-package Java7.earthquakes;
+package Java7.earthquakes.model;
 
 /*
  * Copyright (C) 2007 The Android Open Source Project

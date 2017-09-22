@@ -6,6 +6,7 @@
 package Java7.earthquakes;
 
 
+import Java7.earthquakes.algorithms.QuakeSortInPlace;
 
 /**
  *

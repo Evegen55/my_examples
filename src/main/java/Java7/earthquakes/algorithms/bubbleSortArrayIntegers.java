@@ -1,4 +1,4 @@
-package Java7.earthquakes;
+package Java7.earthquakes.algorithms;
 
 // bubbleSort.java
 // demonstrates bubble sort

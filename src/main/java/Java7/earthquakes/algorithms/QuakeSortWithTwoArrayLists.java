@@ -1,7 +1,9 @@
-package Java7.earthquakes;
+package Java7.earthquakes.algorithms;
 
 import java.util.*;
-import edu.duke.*;
+
+import Java7.earthquakes.EarthQuakeParser;
+import Java7.earthquakes.model.QuakeEntry;
 
 /**
  *
@@ -52,7 +54,7 @@ public class QuakeSortWithTwoArrayLists {
      *
      */
     public void testSort() {
-        EarthQuakeParser parser = new EarthQuakeParser(); 
+        EarthQuakeParser parser = new EarthQuakeParser();
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedatasmall.atom";
         //String source = "data/nov20quakedata.atom";
