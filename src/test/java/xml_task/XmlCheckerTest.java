@@ -15,23 +15,24 @@ import static xml_task.XmlChecker.findByExpression;
  */
 public class XmlCheckerTest {
 
-    String pathToXml = "D:\\1_Workspaces\\github\\my_examples\\src\\test\\resources\\xsd_dtd\\shiporder.xml";
-    String pathToXSD = "file:///D:\\1_Workspaces\\github\\my_examples\\src\\test\\resources\\xsd_dtd\\shiporder.xsd";
-    String xPathToElement = "/shiporder/shipto/name";
-    String xPathToElement1 = "/shiporder/item";
-    final int numOfItem = 2;
+    final String pathToXml = "D:\\1_Workspaces\\github\\my_examples\\src\\test\\resources\\xsd_dtd\\shiporder.xml";
+    final String pathToXSD = "file:///D:\\1_Workspaces\\github\\my_examples\\src\\test\\resources\\xsd_dtd\\shiporder.xsd";
+    final String xPathToElement = "/shiporder/shipto/name";
+
+    final String xPathToArrayOfElements = "/shiporder/item";
+    final int numOfItems = 2;
 
     @Test
     public void main() throws Exception {
-        String[] args = {pathToXml, pathToXSD, xPathToElement};
+        final String[] args = {pathToXml, pathToXSD, xPathToElement};
         XmlChecker.main(args);
     }
 
     @Test
     public void test() {
         try {
-            final int byExpression = findByExpression(pathToXml, xPathToElement1);
-            assertTrue(byExpression == numOfItem);
+            final int byExpression = findByExpression(pathToXml, xPathToArrayOfElements);
+            assertTrue(byExpression == numOfItems);
         } catch (ParserConfigurationException | SAXException | IOException | XPathExpressionException e) {
             e.printStackTrace();
         }

@@ -49,14 +49,12 @@ public class XmlChecker {
 
                 //second task
                 if (xPathToElement != null) {
-                    System.out.println(findByExpression(pathToXml, xPathToElement));
+                    System.out.println("the number of certain element in the XML file" + findByExpression(pathToXml, xPathToElement));
                 }
-                // TODO: 9/25/2017 add standard logger?
+
             } catch (SAXException e) {
                 System.out.println(xmlFile.getSystemId() + " is not valid" + "\n" + e);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (ParserConfigurationException | XPathExpressionException e) {
+            } catch (IOException | ParserConfigurationException | XPathExpressionException e) {
                 e.printStackTrace();
             }
         }
@@ -84,8 +82,6 @@ public class XmlChecker {
         final XPathExpression expr = xpath.compile(xPathToElement);
 
         final NodeList list = (NodeList) expr.evaluate(doc, XPathConstants.NODESET);
-
-        final int length = list.getLength();
-        return length;
+        return list.getLength();
     }
 }
