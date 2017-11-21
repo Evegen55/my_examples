@@ -1,15 +1,15 @@
-package Java8_by_Deitel.ch02.fig02_01;// Fig. 2.1: Welcome1.java
-// Text-printing program.
+package Java8.by_Deitel.ch02.fig02_03;// Fig. 2.3: Welcome2.java
+// Printing a line of text with multiple statements.
 
-public class Welcome1  
+public class Welcome2 
 {
    // main method begins execution of Java application
    public static void main(String[] args)
    {
-      System.out.println("Welcome to Java Programming!");
+      System.out.print("Welcome to ");
+      System.out.println("Java Programming!");
    } // end method main
-} // end class Welcome1
-
+} // end class Welcome2
 
 /**************************************************************************
  * (C) Copyright 1992-2014 by Deitel & Associates, Inc. and               *

@@ -1,14 +1,15 @@
-package Java8_by_Deitel.ch02.fig02_04;// Fig. 2.4: Welcome3.java
-// Printing multiple lines with a single statement.
+package Java8.by_Deitel.ch02.fig02_06;// Fig. 2.6: Welcome4.java
+// Displaying multiple lines with method System.out.printf.
 
-public class Welcome3 
+public class Welcome4 
 {
    // main method begins execution of Java application
    public static void main(String[] args)
    {
-      System.out.println("Welcome\nto\nJava\nProgramming!");
+      System.out.printf("%s%n%s%n",          
+         "Welcome to", "Java Programming!");
    } // end method main
-} // end class Welcome3
+} // end class Welcome4
 
 /**************************************************************************
  * (C) Copyright 1992-2014 by Deitel & Associates, Inc. and               *

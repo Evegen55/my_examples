@@ -1,15 +1,27 @@
-package Java8_by_Deitel.ch02.fig02_06;// Fig. 2.6: Welcome4.java
-// Displaying multiple lines with method System.out.printf.
+package Java8.by_Deitel.ch17.fig17_19;// Fig. 17.19: RandomIntStream.java
+// Rolling a die 6,000,000 times
+import java.security.SecureRandom;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.IntStream;
+import java.util.stream.Collectors;
 
-public class Welcome4 
+public class RandomIntStream
 {
-   // main method begins execution of Java application
    public static void main(String[] args)
    {
-      System.out.printf("%s%n%s%n",          
-         "Welcome to", "Java Programming!");
-   } // end method main
-} // end class Welcome4
+      SecureRandom random = new SecureRandom();
+
+      // roll a die 6,000,000 times and summarize the results
+      System.out.printf("%-6s%s%n", "Face", "Frequency");
+      random.ints(6_000_000, 1, 7)
+            .boxed()
+            .collect(Collectors.groupingBy(Function.identity(),
+               Collectors.counting()))
+            .forEach((face, frequency) -> 
+               System.out.printf("%-6d%d%n", face, frequency));
+   } 
+} // end class RandomIntStream
 
 /**************************************************************************
  * (C) Copyright 1992-2014 by Deitel & Associates, Inc. and               *

@@ -1,30 +1,14 @@
-package Java8_by_Deitel.ch02.fig02_07;// Fig. 2.7: Addition.java
-// Addition program that displays the sum of two numbers.
-import java.util.Scanner; // program uses class Scanner
+package Java8.by_Deitel.ch02.fig02_04;// Fig. 2.4: Welcome3.java
+// Printing multiple lines with a single statement.
 
-public class Addition 
+public class Welcome3 
 {
    // main method begins execution of Java application
    public static void main(String[] args)
    {
-      // create a Scanner to obtain input from the command window
-      Scanner input = new Scanner(System.in);
-
-      int number1; // first number to add
-      int number2; // second number to add
-      int sum; // sum of number1 and number2
-
-      System.out.print("Enter first integer: "); // prompt 
-      number1 = input.nextInt(); // read first number from user
-
-      System.out.print("Enter second integer: "); // prompt 
-      number2 = input.nextInt(); // read second number from user
-
-      sum = number1 + number2; // add numbers, then store total in sum
-
-      System.out.printf("Sum is %d%n", sum); // display sum
+      System.out.println("Welcome\nto\nJava\nProgramming!");
    } // end method main
-} // end class Addition
+} // end class Welcome3
 
 /**************************************************************************
  * (C) Copyright 1992-2014 by Deitel & Associates, Inc. and               *
