@@ -1,5 +1,7 @@
-// Fig. 17.10: ProcessingEmployees.java
+package Java8.by_Deitel.ch17.fig17_09_16;// Fig. 17.10: ProcessingEmployees.java
 // Processing streams of Employee objects.
+import Java8.by_Deitel.ch17.fig17_09_16.Employee;
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
