@@ -14,27 +14,25 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package finalize;
+package Java7.finalize;
 
 /**
- *
- * @author Cameron, Dane (2015-03-26). 
- *   A Software Engineer Learns Java and Object Orientated Programming (p. 103).
- *   Cisdal. Kindle Edition. 
+ * @author Cameron, Dane (2015-03-26).
+ * A Software Engineer Learns Java and Object Orientated Programming (p. 103).
+ * Cisdal. Kindle Edition.
  * @author Lartsev
- * If you would like to see finalize in action, try executing the following program. 
- * It creates 1 million objects, and immediately dereferences them 
- * (for reasons that will be explained shortly), making them available 
+ * If you would like to see finalize in action, try executing the following program.
+ * It creates 1 million objects, and immediately dereferences them
+ * (for reasons that will be explained shortly), making them available
  * for garbage collection:
-
-
  */
 public class FinalizeExample {
+
     @Override
     protected void finalize() throws Throwable {
         System.out.println("Finalize called");
     }
-     
+
     public static void main(String[] args) {
         for (int i = 0; i < 10000000; i++) {
             FinalizeExample f = new FinalizeExample();
