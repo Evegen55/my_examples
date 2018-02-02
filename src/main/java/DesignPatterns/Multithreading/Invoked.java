@@ -9,10 +9,11 @@ public class Invoked {
 
     static {
         System.out.println("inside static before start");
+        LOGGER.info("WILL NEVER BE PRINTED TOO");
         new Thread(() -> {
 //            try {
                 System.out.println("slipping ... ");
-                LOGGER.info("abc");
+                LOGGER.info("WILL NEVER BE PRINTED AGAIN");
                 throw new RuntimeException();
 //                System.out.println("slipped");
 //            } catch (InterruptedException e) {
@@ -20,5 +21,10 @@ public class Invoked {
 //            }
         }).start();
         System.out.println("inside static after start");
+        LOGGER.info("WILL NEVER BE PRINTED TOO");
+    }
+
+    public Invoked() {
+        System.out.println("Invoked invoked");
     }
 }
