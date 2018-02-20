@@ -2,8 +2,8 @@ package Java7.earthquakes;
 
 import org.junit.Test;
 
-import static Java7.earthquakes.algorithms_and_tasks.EarthQuakeClient.allQuakesRussia;
-import static Java7.earthquakes.algorithms_and_tasks.EarthQuakeClient.quakesByPhrase;
+import static Java7.earthquakes.apps.EarthQuakeClient.allQuakesRussia;
+import static Java7.earthquakes.apps.EarthQuakeClient.quakesByPhrase;
 
 /**
  * @author (created on 9/21/2017).
@@ -11,7 +11,7 @@ import static Java7.earthquakes.algorithms_and_tasks.EarthQuakeClient.quakesByPh
 public class EarthQuakeClientTest {
 
     @Test
-    public void allQuaqesRussiaTest() throws Exception {
+    public void allQuaqesRussiaTest() {
         allQuakesRussia();
     }
 

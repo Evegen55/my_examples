@@ -1,21 +1,31 @@
-package Java7.earthquakes.algorithms_and_tasks;
+package Java7.earthquakes.apps;
 
 
+import Java7.earthquakes.EarthQuakeParser;
 import Java7.earthquakes.model.Location;
 import Java7.earthquakes.model.QuakeEntry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import static Java7.earthquakes.apps.EarthQuakeClient2.dumpCSV;
 
 /**
  * @author Lartsev
  */
 public class EarthQuakeClient {
 
-    public static final String SOURCE_PAST_WEEK = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
-    public static final String SOURCE_PAST_DAY = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.atom";
-    public static final String SOURCE_PAST_HOURS = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_hour.atom";
+    private final static Logger LOGGER = LoggerFactory.getLogger(EarthQuakeClient.class);
 
-    private static ArrayList<QuakeEntry> quakeEntryArrayList;
+    public static final String SOURCE_BASE = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/";
+    public static final String SOURCE_EXTENSION = ".atom";
+    public static final String SOURCE_PAST_WEEK = SOURCE_BASE + "all_week" + SOURCE_EXTENSION;
+    public static final String SOURCE_PAST_DAY = SOURCE_BASE + "all_day" + SOURCE_EXTENSION;
+    public static final String SOURCE_PAST_HOURS = SOURCE_BASE + "all_hour" + SOURCE_EXTENSION;
+
+    private static List<QuakeEntry> quakeEntryArrayList;
 
 
     /**
@@ -23,7 +33,7 @@ public class EarthQuakeClient {
      * @param magMin
      * @return
      */
-    public ArrayList<QuakeEntry> filterByMagnitude(ArrayList<QuakeEntry> quakeData, double magMin) {
+    public static ArrayList<QuakeEntry> filterByMagnitude(List<QuakeEntry> quakeData, double magMin) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
         //TODO
         for (QuakeEntry qe : quakeData) {
@@ -40,7 +50,7 @@ public class EarthQuakeClient {
      * @param from
      * @return
      */
-    public ArrayList<QuakeEntry> filterByDistanceFrom(ArrayList<QuakeEntry> quakeData, double distMax, Location from) {
+    public ArrayList<QuakeEntry> filterByDistanceFrom(List<QuakeEntry> quakeData, double distMax, Location from) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
         // TODO
         for (QuakeEntry qe : quakeData) {
@@ -52,21 +62,6 @@ public class EarthQuakeClient {
     }
 
     /**
-     * @param list
-     */
-    public void dumpCSV(ArrayList<QuakeEntry> list) {
-        System.out.println("Latitude,Longitude,Magnitude,Info");
-        for (QuakeEntry qe : list) {
-            System.out.printf("%4.2f,%4.2f,%4.2f,%s\n",
-                    qe.getLocation().getLatitude(),
-                    qe.getLocation().getLongitude(),
-                    qe.getMagnitude(),
-                    qe.getInfo());
-        }
-
-    }
-
-    /**
      *
      */
     public void bigQuakes() {
@@ -74,8 +69,8 @@ public class EarthQuakeClient {
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedata.atom";
         String source = "data/nov20quakedatasmall.atom";
-        ArrayList<QuakeEntry> list = parser.read(source);
-        System.out.println("read data for " + list.size() + " quakes");
+        List<QuakeEntry> list = parser.readAndParseXMLFrom(source);
+        System.out.println("readAndParseXMLFrom data for " + list.size() + " quakes");
         /*
         for (QuakeEntry qe : list) {
             if (qe.getMagnitude() > 5.0) {
@@ -97,9 +92,9 @@ public class EarthQuakeClient {
         //String source = "data/nov20quakedata.atom";
         String source = "data/nov20quakedatasmall.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
-        ArrayList<QuakeEntry> list = parser.read(source);
+        List<QuakeEntry> list = parser.readAndParseXMLFrom(source);
         dumpCSV(list);
-        System.out.println("# quakes read: " + list.size());
+        System.out.println("# quakes readAndParseXMLFrom: " + list.size());
     }
 
     /**
@@ -110,16 +105,15 @@ public class EarthQuakeClient {
         //String source = "data/nov20quakedata.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedatasmall.atom";
-        ArrayList<QuakeEntry> list = parser.read(source);
-        System.out.println("# quakes read: " + list.size());
+        List<QuakeEntry> list = parser.readAndParseXMLFrom(source);
+        System.out.println("# quakes readAndParseXMLFrom: " + list.size());
 
         //Durham, NC
         //Location city = new Location(35.988, -78.907);
         //Bridgeport, CA
         Location city = new Location(38.17, -118.82);
         ArrayList<QuakeEntry> close = filterByDistanceFrom(list, 1000 * 1000, city);
-        for (int k = 0; k < close.size(); k++) {
-            QuakeEntry entry = close.get(k);
+        for (QuakeEntry entry : close) {
             double distanceInMeters = city.distanceTo(entry.getLocation());
             System.out.println(distanceInMeters / 1000 + " " + entry.getInfo());
         }
@@ -146,7 +140,7 @@ public class EarthQuakeClient {
      * @param maxDepth
      * @return
      */
-    public ArrayList<QuakeEntry> filterByDepth(ArrayList<QuakeEntry> quakeData, double minDepth, double maxDepth) {
+    public ArrayList<QuakeEntry> filterByDepth(List<QuakeEntry> quakeData, double minDepth, double maxDepth) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
         //TODO
         for (QuakeEntry qe : quakeData) {
@@ -170,10 +164,10 @@ public class EarthQuakeClient {
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedata.atom";
         //String  source = "data/nov20quakedatasmall.atom";
-        ArrayList<QuakeEntry> list = parser.read(source);
-        System.out.println("read data for " + list.size() + " quakes");
+        List<QuakeEntry> list = parser.readAndParseXMLFrom(source);
+        System.out.println("readAndParseXMLFrom data for " + list.size() + " quakes");
 
-        ArrayList<QuakeEntry> listBig = filterByDepth(list, -4000.0, -2000.0);
+        List<QuakeEntry> listBig = filterByDepth(list, -4000.0, -2000.0);
         for (QuakeEntry qe : listBig) {
             System.out.println(qe);
         }
@@ -206,8 +200,8 @@ public class EarthQuakeClient {
      * @param phrase
      * @return
      */
-    public static ArrayList<QuakeEntry> filterByPhrase(ArrayList<QuakeEntry> quakeData, String where, String phrase) {
-        final ArrayList<QuakeEntry> answer = new ArrayList<>();
+    public static List<QuakeEntry> filterByPhrase(List<QuakeEntry> quakeData, String where, String phrase) {
+        final List<QuakeEntry> answer = new ArrayList<>();
         for (QuakeEntry qe : quakeData) {
             if (where.equals("end") && qe.getInfo().endsWith(phrase)) {
                 answer.add(qe);
@@ -226,8 +220,8 @@ public class EarthQuakeClient {
     public static void quakesByPhrase(final String where, final String phrase) {
         //String source = "data/nov20quakedata.atom";
         //String  source = "data/nov20quakedatasmall.atom";
-        quakeEntryArrayList = EarthQuakeParser.read(SOURCE_PAST_WEEK);
-        System.out.println("read data for " + quakeEntryArrayList.size() + " quakes");
+        quakeEntryArrayList = EarthQuakeParser.readAndParseXMLFrom(SOURCE_PAST_WEEK);
+        System.out.println("readAndParseXMLFrom data for " + quakeEntryArrayList.size() + " quakes");
         quakeEntryArrayList = filterByPhrase(quakeEntryArrayList, where, phrase);
         quakeEntryArrayList.forEach(System.out::println);
         //for quizz
@@ -239,28 +233,26 @@ public class EarthQuakeClient {
      */
     public static void allQuakesRussia() {
 
-        //read and analyse by hours
-        quakeEntryArrayList = EarthQuakeParser.read(SOURCE_PAST_HOURS);
-        System.out.println("Quakes in Russia" + "\n" + "for past hours:" + "\n" + "read data for past hour" + "\t" + quakeEntryArrayList.size() + " quakes");
+        //readAndParseXMLFrom and analyse by hours
+        quakeEntryArrayList = EarthQuakeParser.readAndParseXMLFrom(SOURCE_PAST_HOURS);
+        LOGGER.info("\n\tQuakes in the WORLD for past hours: \n\t\t there was {} quakes", quakeEntryArrayList.size());
         quakeEntryArrayList = filterByPhrase(quakeEntryArrayList, "any", "Russia");
+        LOGGER.info("\n\tQuakes in RUSSIA for past hours: \n\t\t there was {} quakes, as shown below:", quakeEntryArrayList.size());
         quakeEntryArrayList.forEach(System.out::println);
-        System.out.println("Amount of quakes for past hour" + "\t" + quakeEntryArrayList.size());
 
-        //read and analyse by day
-        quakeEntryArrayList = EarthQuakeParser.read(SOURCE_PAST_DAY);
-        System.out.println("//=========================================================");
-        System.out.println("for past day:" + "\n" + "read data for past day" + "\t" + quakeEntryArrayList.size() + " quakes");
+        //readAndParseXMLFrom and analyse by day
+        quakeEntryArrayList = EarthQuakeParser.readAndParseXMLFrom(SOURCE_PAST_DAY);
+        LOGGER.info("\n\tQuakes in the WORLD for past hours: \n\t\t there was {} quakes", quakeEntryArrayList.size());
         quakeEntryArrayList = filterByPhrase(quakeEntryArrayList, "any", "Russia");
+        LOGGER.info("\n\tQuakes in RUSSIA for past hours: \n\t\t there was {} quakes, as shown below:", quakeEntryArrayList.size());
         quakeEntryArrayList.forEach(System.out::println);
-        System.out.println("Amount of quakes daily" + "\t" + quakeEntryArrayList.size());
 
-        //read and analyse by week
-        quakeEntryArrayList = EarthQuakeParser.read(SOURCE_PAST_WEEK);
-        System.out.println("//=========================================================");
-        System.out.println("for past week:" + "\n" + "read data for past week" + "\t" + quakeEntryArrayList.size() + " quakes");
+        //readAndParseXMLFrom and analyse by week
+        quakeEntryArrayList = EarthQuakeParser.readAndParseXMLFrom(SOURCE_PAST_WEEK);
+        LOGGER.info("\n\tQuakes in the WORLD for past hours: \n\t\t there was {} quakes", quakeEntryArrayList.size());
         quakeEntryArrayList = filterByPhrase(quakeEntryArrayList, "any", "Russia");
+        LOGGER.info("\n\tQuakes in RUSSIA for past hours: \n\t\t there was {} quakes, as shown below:", quakeEntryArrayList.size());
         quakeEntryArrayList.forEach(System.out::println);
-        System.out.println("Amount of quakes weekly" + "\t" + quakeEntryArrayList.size());
     }
 
 }

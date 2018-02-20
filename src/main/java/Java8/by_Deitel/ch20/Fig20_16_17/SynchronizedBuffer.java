@@ -37,11 +37,11 @@ public class SynchronizedBuffer implements Buffer
    // return value from buffer
    public synchronized int blockingGet() throws InterruptedException
    {
-      // while no data to read, place thread in waiting state
+      // while no data to readAndParseXMLFrom, place thread in waiting state
       while (!occupied)
       {
          // output thread information and buffer information, then wait
-         System.out.println("Consumer tries to read."); // for demo only
+         System.out.println("Consumer tries to readAndParseXMLFrom."); // for demo only
          displayState("Buffer empty. Consumer waits."); // for demo only
          wait();
       }

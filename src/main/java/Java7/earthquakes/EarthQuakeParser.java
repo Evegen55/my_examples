@@ -1,7 +1,9 @@
-package Java7.earthquakes.algorithms_and_tasks;
+package Java7.earthquakes;
 
 
 import Java7.earthquakes.model.QuakeEntry;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -14,31 +16,35 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Lartsev
  */
-public class EarthQuakeParser {
+public final class EarthQuakeParser {
+
+    private final static Logger LOGGER = LoggerFactory.getLogger(EarthQuakeParser.class);
 
     /**
      * @param source
      * @return
      */
-    public static ArrayList<QuakeEntry> read(String source) {
-        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    public static List<QuakeEntry> readAndParseXMLFrom(final String source) {
+        LOGGER.info("Start parsing the {} source", source);
+        final ArrayList<QuakeEntry> list = new ArrayList<>();
+
+        final DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
-            Document document = null;
+            Document document;
             if (source.startsWith("http")) {
                 document = builder.parse(source);
             } else {
                 document = builder.parse(new File(source));
             }
 
-            NodeList nodeList = document.getDocumentElement().getChildNodes();
-
-            ArrayList<QuakeEntry> list = new ArrayList<QuakeEntry>();
+            final NodeList nodeList = document.getDocumentElement().getChildNodes();
 
             for (int k = 0; k < nodeList.getLength(); k++) {
                 Node node = nodeList.item(k);
@@ -65,7 +71,7 @@ public class EarthQuakeParser {
                         String mags = s2.substring(2, 5);
                         if (mags.contains("?")) {
                             mag = 0.0;
-                            System.err.println("unknown magnitude in data");
+                            LOGGER.error("unknown magnitude in data");
                         } else {
                             mag = Double.parseDouble(mags);
                         }
@@ -87,11 +93,11 @@ public class EarthQuakeParser {
             }
             return list;
         } catch (ParserConfigurationException pce) {
-            System.err.println("parser configuration exception");
+            LOGGER.error("parser configuration exception", pce);
         } catch (SAXException se) {
-            System.err.println("sax exception");
+            LOGGER.error("sax exception", se);
         } catch (IOException ioe) {
-            System.err.println("ioexception");
+            LOGGER.error("ioexception", ioe);
         }
         return null;
     }
