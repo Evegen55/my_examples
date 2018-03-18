@@ -9,25 +9,25 @@ package Java7.earthquakes.algorithms_and_tasks;
  */
 
 
+import Java7.earthquakes.EarthQuakeParser;
 import Java7.earthquakes.model.Location;
 import Java7.earthquakes.model.QuakeEntry;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
- *
  * @author Lartsev
  */
 public class ClosestQuakes {
 
     /**
-     *
      * @param quakeData
      * @param current
      * @param howMany
      * @return
      */
-    public static ArrayList<QuakeEntry> getClosest(final ArrayList<QuakeEntry> quakeData,
+    public static ArrayList<QuakeEntry> getClosest(final List<QuakeEntry> quakeData,
                                                    final Location current, final int howMany) {
         final ArrayList<QuakeEntry> copy = new ArrayList<>(quakeData);
         final ArrayList<QuakeEntry> ret = new ArrayList<>();
@@ -60,8 +60,8 @@ public class ClosestQuakes {
         //String source = "data/nov20quakedata.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         String source = "data/nov20quakedatasmall.atom";
-        final ArrayList<QuakeEntry> list = EarthQuakeParser.read(source);
-        System.out.println("read data for " + list.size());
+        final List<QuakeEntry> list = EarthQuakeParser.readAndParseXMLFrom(source);
+        System.out.println("readAndParseXMLFrom data for " + list.size());
 
         ArrayList<QuakeEntry> close = getClosest(list, jakarta, 3);
         for (int k = 0; k < close.size(); k++) {

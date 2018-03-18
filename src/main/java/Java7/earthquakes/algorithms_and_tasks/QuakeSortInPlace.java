@@ -10,7 +10,10 @@ package Java7.earthquakes.algorithms_and_tasks;
 
 import java.util.*;
 
+import Java7.earthquakes.EarthQuakeParser;
 import Java7.earthquakes.model.QuakeEntry;
+
+import static Java7.earthquakes.apps.EarthQuakeClient2.dumpCSV;
 
 /**
  *
@@ -63,13 +66,13 @@ public class QuakeSortInPlace
      */
     public void testSort() {
         EarthQuakeParser parser = new EarthQuakeParser();
-        String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
+        String source = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedatasmall.atom";
         //String source = "data/nov20quakedata.atom";
         //String source = "data/earthQuakeDataDec6sample1.atom";
-        ArrayList<QuakeEntry> list  = parser.read(source);  
+        List<QuakeEntry> list  = parser.readAndParseXMLFrom(source);
        
-        System.out.println("read data for "+list.size()+" quakes");
+        System.out.println("readAndParseXMLFrom data for "+list.size()+" quakes");
         //Modify the testSort method to comment out the line sortByMagnitude 
         //and add below this line a call to sortByLargestDepth. 
         //Run your program on any data file and you should see the earthquakes 
@@ -98,26 +101,11 @@ public class QuakeSortInPlace
         //String source = "data/nov20quakedata.atom";
         String source = "data/nov20quakedatasmall.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
-        ArrayList<QuakeEntry> list  = parser.read(source);
+        List<QuakeEntry> list  = parser.readAndParseXMLFrom(source);
         dumpCSV(list);
-        System.out.println("# quakes read: "+list.size());
+        System.out.println("# quakes readAndParseXMLFrom: "+list.size());
     }
-    
-    /**
-     *
-     * @param list
-     */
-    public void dumpCSV(ArrayList<QuakeEntry> list){
-		System.out.println("Latitude,Longitude,Magnitude,Info");
-		for(QuakeEntry qe : list){
-			System.out.printf("%4.2f,%4.2f,%4.2f,%s\n",
-			                  qe.getLocation().getLatitude(),
-			                  qe.getLocation().getLongitude(),
-			                  qe.getMagnitude(),
-			                  qe.getInfo());
-	    }
-		
-	}
+
     
     /**
      *
@@ -143,7 +131,7 @@ public class QuakeSortInPlace
      * This method should call the method getLargestDepth repeatedly until the ArrayList is sorted.
      * @param in 
      */
-    public void sortByLargestDepth(ArrayList<QuakeEntry> in){
+    public void sortByLargestDepth(List<QuakeEntry> in){
         Collections.sort(in, cmtrDepth);
     }
     /**

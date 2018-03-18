@@ -1,7 +1,8 @@
-package Java7.earthquakes.algorithms_and_tasks;
+package Java7.earthquakes.apps;
 
 import java.util.*;
 
+import Java7.earthquakes.EarthQuakeParser;
 import Java7.earthquakes.filters.DepthFilter;
 import Java7.earthquakes.filters.DistanceFilter;
 import Java7.earthquakes.filters.Filter;
@@ -31,7 +32,7 @@ public class EarthQuakeClient2
      * @param f
      * @return
      */
-    public ArrayList<QuakeEntry> filter(ArrayList<QuakeEntry> quakeData, Filter f) {
+    public ArrayList<QuakeEntry> filter(List<QuakeEntry> quakeData, Filter f) {
         ArrayList<QuakeEntry> answer = new ArrayList<QuakeEntry>();
         for(QuakeEntry qe : quakeData) { 
             if (f.satisfies(qe)) { 
@@ -49,8 +50,8 @@ public class EarthQuakeClient2
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedatasmall.atom";
         String source = "data/nov20quakedata.atom";
-        ArrayList<QuakeEntry> list  = parser.read(source);         
-        System.out.println("read data for "+list.size()+" quakes");
+        List<QuakeEntry> list  = parser.readAndParseXMLFrom(source);
+        System.out.println("readAndParseXMLFrom data for "+list.size()+" quakes");
 
         
         
@@ -91,8 +92,8 @@ public class EarthQuakeClient2
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedatasmall.atom";
         String source = "data/nov20quakedata.atom";
-        ArrayList<QuakeEntry> list  = parser.read(source);         
-        System.out.println("read data for "+list.size()+" quakes");
+        List<QuakeEntry> list  = parser.readAndParseXMLFrom(source);
+        System.out.println("readAndParseXMLFrom data for "+list.size()+" quakes");
         
         
         MatchAllFilter maf = new MatchAllFilter();
@@ -118,8 +119,8 @@ public class EarthQuakeClient2
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
         //String source = "data/nov20quakedatasmall.atom";
         String source = "data/nov20quakedata.atom";
-        ArrayList<QuakeEntry> list  = parser.read(source);         
-        System.out.println("read data for "+list.size()+" quakes");
+        List<QuakeEntry> list  = parser.readAndParseXMLFrom(source);
+        System.out.println("readAndParseXMLFrom data for "+list.size()+" quakes");
         
         
         MatchAllFilter maf = new MatchAllFilter();
@@ -147,16 +148,16 @@ public class EarthQuakeClient2
         //String source = "../data/nov20quakedata.atom";
         String source = "data/nov20quakedatasmall.atom";
         //String source = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.atom";
-        ArrayList<QuakeEntry> list  = parser.read(source);
+        List<QuakeEntry> list  = parser.readAndParseXMLFrom(source);
         dumpCSV(list);
-        System.out.println("# quakes read: "+list.size());
+        System.out.println("# quakes readAndParseXMLFrom: "+list.size());
     }
 
     /**
      *
      * @param list
      */
-    public void dumpCSV(ArrayList<QuakeEntry> list){
+    public static void dumpCSV(final List<QuakeEntry> list){
         System.out.println("Latitude,Longitude,Magnitude,Info");
         for(QuakeEntry qe : list){
             System.out.printf("%4.2f,%4.2f,%4.2f,%s\n",

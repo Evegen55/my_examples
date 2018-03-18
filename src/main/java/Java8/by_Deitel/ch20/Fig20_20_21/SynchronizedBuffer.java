@@ -43,7 +43,7 @@ public class SynchronizedBuffer implements Buffer
         
          displayState("Producer writes " + buffer);
 
-         // signal any threads waiting to read from buffer
+         // signal any threads waiting to readAndParseXMLFrom from buffer
          canRead.signalAll(); 
       } 
       finally
@@ -55,16 +55,16 @@ public class SynchronizedBuffer implements Buffer
    // return value from buffer
    public int blockingGet() throws InterruptedException
    {
-      int readValue = 0; // initialize value read from buffer
+      int readValue = 0; // initialize value readAndParseXMLFrom from buffer
       accessLock.lock(); // lock this object
 
       // output thread information and buffer information, then wait
       try
       {
-         // if there is no data to read, place thread in waiting state
+         // if there is no data to readAndParseXMLFrom, place thread in waiting state
          while (!occupied) 
          {
-            System.out.println("Consumer tries to read.");
+            System.out.println("Consumer tries to readAndParseXMLFrom.");
             displayState("Buffer empty. Consumer waits.");
             canRead.await(); // wait until buffer is full
          } 

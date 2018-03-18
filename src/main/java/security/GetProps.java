@@ -39,7 +39,7 @@ class GetProps {
     next Navigate to the folder
     next try it with with -Djava.security.manager VM parameter
     You probably see next lines:
-            "break in console is not supported due to security permissions: access denied ("java.util.PropertyPermission" "idea.launcher.bin.path" "read")
+            "break in console is not supported due to security permissions: access denied ("java.util.PropertyPermission" "idea.launcher.bin.path" "readAndParseXMLFrom")
             Exception in thread "main" java.security.AccessControlException: access denied ("java.lang.reflect.ReflectPermission" "suppressAccessChecks")"
     Then copy \main\resources\examplepolicy file in the c:\Test\ folder
     Try it run with -Djava.security.manager -Djava.security.policy=examplepolicy VM parameters
