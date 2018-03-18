@@ -4,6 +4,11 @@ import java.lang.reflect.Constructor;
 
 public class ProcessAnnotation {
 
+    /**
+     *
+     * @param args
+     * @throws ClassNotFoundException
+     */
     public static void main(String[] args) throws ClassNotFoundException {
         final Class cl = Class.forName("annotations.AnnotatedClass");
 
