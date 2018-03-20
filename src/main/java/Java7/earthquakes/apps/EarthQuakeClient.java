@@ -235,23 +235,23 @@ public class EarthQuakeClient {
 
         //readAndParseXMLFrom and analyse by hours
         quakeEntryArrayList = EarthQuakeParser.readAndParseXMLFrom(SOURCE_PAST_HOURS);
-        LOGGER.info("\n\tQuakes in the WORLD for past hours: \n\t\t there was {} quakes", quakeEntryArrayList.size());
+        LOGGER.info("\tQuakes in the WORLD for past HOURS:\n\t\t there was {} quakes", quakeEntryArrayList.size());
         quakeEntryArrayList = filterByPhrase(quakeEntryArrayList, "any", "Russia");
-        LOGGER.info("\n\tQuakes in RUSSIA for past hours: \n\t\t there was {} quakes, as shown below:", quakeEntryArrayList.size());
+        LOGGER.info("\tQuakes in RUSSIA for past HOURS:\n\t\t there was {} quakes, as shown below:", quakeEntryArrayList.size());
         quakeEntryArrayList.forEach(System.out::println);
 
         //readAndParseXMLFrom and analyse by day
         quakeEntryArrayList = EarthQuakeParser.readAndParseXMLFrom(SOURCE_PAST_DAY);
-        LOGGER.info("\n\tQuakes in the WORLD for past hours: \n\t\t there was {} quakes", quakeEntryArrayList.size());
+        LOGGER.info("\tQuakes in the WORLD for past DAYS:\n\t\t there was {} quakes", quakeEntryArrayList.size());
         quakeEntryArrayList = filterByPhrase(quakeEntryArrayList, "any", "Russia");
-        LOGGER.info("\n\tQuakes in RUSSIA for past hours: \n\t\t there was {} quakes, as shown below:", quakeEntryArrayList.size());
+        LOGGER.info("\tQuakes in RUSSIA for past DAYS:\n\t\t there was {} quakes, as shown below:", quakeEntryArrayList.size());
         quakeEntryArrayList.forEach(System.out::println);
 
         //readAndParseXMLFrom and analyse by week
         quakeEntryArrayList = EarthQuakeParser.readAndParseXMLFrom(SOURCE_PAST_WEEK);
-        LOGGER.info("\n\tQuakes in the WORLD for past hours: \n\t\t there was {} quakes", quakeEntryArrayList.size());
+        LOGGER.info("\tQuakes in the WORLD for past WEEK:\n\t\t there was {} quakes", quakeEntryArrayList.size());
         quakeEntryArrayList = filterByPhrase(quakeEntryArrayList, "any", "Russia");
-        LOGGER.info("\n\tQuakes in RUSSIA for past hours: \n\t\t there was {} quakes, as shown below:", quakeEntryArrayList.size());
+        LOGGER.info("\tQuakes in RUSSIA for past WEEK:\n\t\t there was {} quakes, as shown below:", quakeEntryArrayList.size());
         quakeEntryArrayList.forEach(System.out::println);
     }
 
