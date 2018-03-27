@@ -1,4 +1,4 @@
-package Java8.StreamAPI;
+package Parallelism;
 
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
