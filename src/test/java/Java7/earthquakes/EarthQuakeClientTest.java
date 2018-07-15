@@ -6,7 +6,7 @@ import static Java7.earthquakes.apps.EarthQuakeClient.allQuakesRussia;
 import static Java7.earthquakes.apps.EarthQuakeClient.quakesByPhrase;
 
 /**
- * @author (created on 9/21/2017).
+ * @author (created on 9 / 21 / 2017).
  */
 public class EarthQuakeClientTest {
 
