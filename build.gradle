@@ -47,7 +47,9 @@ dependencies {
     compile name: 'javase-2.3-SNAPSHOT'
 
     //for open_cv
-    compile name: 'opencv-2413'
+//    compile name: 'opencv-2413'
+    //mvn install:install-file -Dfile=/home/evgen/Development/1_Under_VCS/github/1_CAR_MEDIA/main_carauto_board/local-maven-repo/linux/opencv-341.jar -DgroupId=org.opencv -DartifactId=opencv.javawraper -Dversion=3.4.1 -Dpackaging=jar
+    compile 'org.opencv:opencv.javawraper:3.4.1'
 
     compile name: 'algs4'
     // https://mvnrepository.com/artifact/com.google.code.findbugs/findbugs

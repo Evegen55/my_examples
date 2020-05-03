@@ -1,5 +1,6 @@
 /.idea
 /build
+/out
 *.log
 .gradle/
 src/main/resources/M*.json
